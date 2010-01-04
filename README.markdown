@@ -45,7 +45,8 @@ Whats Missing?
 * Long press support
 * Trackball support (not tested)
 * Focus events (not tested)
-<br />
+.
+
 License
 _______
 
