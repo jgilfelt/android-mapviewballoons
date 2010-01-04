@@ -49,4 +49,5 @@ Whats Missing?
 <br />
 
 The code in this project is licensed under the Apache Software License 2.0.
+<br />
 Copyright (c) 2010 readyState Software Ltd.
