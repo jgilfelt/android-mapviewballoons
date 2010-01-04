@@ -40,12 +40,12 @@ Ensure your projects auto-generated R class is imported within BalloonItemizedOv
 
 Whats Missing?
 --------------
-<br />
+
 Custom balloon layouts and data mappings<br />
 Long press support<br />
 Trackball support (not tested)<br />
 Focus events (not tested)<br />
-.
+
 
 License
 _______
