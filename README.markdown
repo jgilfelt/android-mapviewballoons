@@ -12,7 +12,7 @@ The presentation of the balloons was mostly reverse engineered from Google's Pla
 Usage
 -----
 
-Create a subclass of `BalloonItemizedOverlay` in the same way you would do for the base `ItemizedOverlay` class. Rather than overriding `onTap()` (which is already implemented and final in the subclass to invoke the balloon view display for each item tap), you override `onBalloonTap()` to handle a screen tap even on the balloon itself.
+Create a subclass of `BalloonItemizedOverlay` in the same way you would do for the base `ItemizedOverlay` class. Rather than overriding `onTap()` (which is already implemented and final in the subclass to invoke the balloon view display for each item tap), you override `onBalloonTap()` to handle a screen tap event on the balloon itself.
 
 The data displayed in each balloon is mapped to the title and snippet arguments you provide to the constructor of each `OverlayItem`.
 
@@ -41,18 +41,12 @@ Ensure your projects auto-generated R class is imported within BalloonItemizedOv
 Whats Missing?
 --------------
 
-Custom balloon layouts and data mappings<br />
-Long press support<br />
-Trackball support (not tested)<br />
-Focus events (not tested)<br />
+* Custom balloon layouts and data mappings
+* Long press support
+* Trackball support (not tested)
+* Focus events (not tested)
 
-
-License
-_______
+<br />
 
 The code in this project is licensed under the Apache Software License 2.0.
-
-Copyright
-_________
-
 Copyright (c) 2010 readyState Software Ltd.
