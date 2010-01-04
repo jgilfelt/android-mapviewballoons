@@ -23,6 +23,7 @@ Implementation
 
 Due to the resource file dependencies, there unfortunately isn't a single redistributable file package. You must copy the following into your project:
 
+<pre>
 src/com/readystatesoftware/mapviewballoons/BalloonItemizedOverlay.java
 src/com/readystatesoftware/mapviewballoons/BalloonOverlayView.java
 res/drawable/balloon_overlay_bg_selector.xml
@@ -33,6 +34,7 @@ res/drawable-mdpi/balloon_overlay_close.png
 res/drawable-mdpi/balloon_overlay_focused.9.png
 res/drawable-mdpi/balloon_overlay_unfocused.9.png
 res/layout/balloon_map_overlay.xml
+</pre>
 
 Ensure your projects auto-generated R class is imported within BalloonItemizedOverlay.java and BalloonOverlayView.java.
 
@@ -43,7 +45,7 @@ Whats Missing?
 * Long press support
 * Trackball support (not tested)
 * Focus events (not tested)
-
+<br />
 License
 _______
 
