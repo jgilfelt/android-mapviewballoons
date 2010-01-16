@@ -18,6 +18,7 @@ package com.readystatesoftware.mapviewballoons;
 import mapviewballoons.example.R; 
 
 import java.lang.reflect.Method;
+import java.util.List;
 
 import android.graphics.drawable.Drawable;
 import android.util.Log;
@@ -30,6 +31,7 @@ import com.google.android.maps.GeoPoint;
 import com.google.android.maps.ItemizedOverlay;
 import com.google.android.maps.MapController;
 import com.google.android.maps.MapView;
+import com.google.android.maps.Overlay;
 import com.google.android.maps.OverlayItem;
 
 /**
@@ -106,6 +108,11 @@ public abstract class BalloonItemizedOverlay<Item> extends ItemizedOverlay<Overl
 	
 		balloonView.setVisibility(View.GONE);
 		
+		List<Overlay> mapOverlays = mapView.getOverlays();
+		if (mapOverlays.size() > 1) {
+			hideOtherBalloons(mapOverlays);
+		}
+		
 		balloonView.setData(createItem(index));
 		
 		MapView.LayoutParams params = new MapView.LayoutParams(
@@ -126,6 +133,31 @@ public abstract class BalloonItemizedOverlay<Item> extends ItemizedOverlay<Overl
 		mc.animateTo(point);
 		
 		return true;
+	}
+	
+	/**
+	 * Sets the visibility of this overlay's balloon view to GONE. 
+	 */
+	private void hideBalloon() {
+		if (balloonView != null) {
+			balloonView.setVisibility(View.GONE);
+		}
+	}
+	
+	/**
+	 * Hides the balloon view for any other BalloonItemizedOverlay instances
+	 * that might be present on the MapView.
+	 * 
+	 * @param overlays - list of overlays (including this) on the MapView.
+	 */
+	private void hideOtherBalloons(List<Overlay> overlays) {
+		
+		for (Overlay overlay : overlays) {
+			if (overlay instanceof BalloonItemizedOverlay<?> && overlay != this) {
+				((BalloonItemizedOverlay<?>) overlay).hideBalloon();
+			}
+		}
+		
 	}
 	
 	/**

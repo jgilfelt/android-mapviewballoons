@@ -32,7 +32,9 @@ public class MyMap extends MapActivity {
 	MapView mapView;
 	List<Overlay> mapOverlays;
 	Drawable drawable;
+	Drawable drawable2;
 	MyItemizedOverlay itemizedOverlay;
+	MyItemizedOverlay itemizedOverlay2;
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
@@ -44,6 +46,8 @@ public class MyMap extends MapActivity {
 		mapView.setBuiltInZoomControls(true);
 		
 		mapOverlays = mapView.getOverlays();
+		
+		// first overlay
 		drawable = getResources().getDrawable(R.drawable.marker);
 		itemizedOverlay = new MyItemizedOverlay(drawable, mapView);
 		
@@ -57,12 +61,23 @@ public class MyMap extends MapActivity {
 				"(Interiors Russian defence ministry council chambers in St Petersburg)");		
 		itemizedOverlay.addOverlay(overlayItem2);
 		
-		GeoPoint point3 = new GeoPoint((int)(51.51738*1E6),(int)(-0.08186*1E6));
-		OverlayItem overlayItem3 = new OverlayItem(point3, "Mission: Impossible (1996)", 
-				"(Ethan & Jim cafe meeting)");		
-		itemizedOverlay.addOverlay(overlayItem3);
-		
 		mapOverlays.add(itemizedOverlay);
+		
+		// second overlay
+		drawable2 = getResources().getDrawable(R.drawable.marker2);
+		itemizedOverlay2 = new MyItemizedOverlay(drawable2, mapView);
+		
+		GeoPoint point3 = new GeoPoint((int)(51.513329*1E6),(int)(-0.08896*1E6));
+		OverlayItem overlayItem3 = new OverlayItem(point3, "Sliding Doors (1998)", 
+				"(interiors)");
+		itemizedOverlay2.addOverlay(overlayItem3);
+		
+		GeoPoint point4 = new GeoPoint((int)(51.51738*1E6),(int)(-0.08186*1E6));
+		OverlayItem overlayItem4 = new OverlayItem(point4, "Mission: Impossible (1996)", 
+				"(Ethan & Jim cafe meeting)");		
+		itemizedOverlay2.addOverlay(overlayItem4);
+		
+		mapOverlays.add(itemizedOverlay2);
 		
 		final MapController mc = mapView.getController();
 		mc.animateTo(point2);
