@@ -1,5 +1,5 @@
 /***
- * Copyright (c) 2010 readyState Software Ltd
+ * Copyright (c) 2010 Alexandre Gherschon
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may
  * not use this file except in compliance with the License. You may obtain
@@ -13,10 +13,9 @@
  * 
  */
 
-package com.readystatesoftware.mapviewballoons;
+package be.agherschon.mapviewimageballoons;
 
 import mapviewballoons.example.R;
-
 import android.content.Context;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -25,8 +24,6 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import com.google.android.maps.OverlayItem;
 
 /**
  * A view representing a MapView marker information balloon.
@@ -37,18 +34,19 @@ import com.google.android.maps.OverlayItem;
  * <li>drawable/balloon_overlay_close.png</li>
  * <li>drawable/balloon_overlay_focused.9.png</li>
  * <li>drawable/balloon_overlay_unfocused.9.png</li>
- * <li>layout/balloon_map_overlay.xml</li>
+ * <li>layout/image_balloon_map_overlay.xml</li>
  * </ul>
  * </p>
  * 
- * @author Jeff Gilfelt
+ * @author Alexandre Gherschon
  *
  */
-public class BalloonOverlayView extends FrameLayout {
+public class ImageBalloonOverlayView extends FrameLayout {
 
 	private LinearLayout layout;
 	private TextView title;
 	private TextView snippet;
+	private ImageView imageView;
 
 	/**
 	 * Create a new ImageBalloonOverlayView.
@@ -57,7 +55,7 @@ public class BalloonOverlayView extends FrameLayout {
 	 * @param balloonBottomOffset - The bottom padding (in pixels) to be applied
 	 * when rendering this view.
 	 */
-	public BalloonOverlayView(Context context, int balloonBottomOffset) {
+	public ImageBalloonOverlayView(Context context, int balloonBottomOffset) {
 
 		super(context);
 
@@ -67,9 +65,10 @@ public class BalloonOverlayView extends FrameLayout {
 
 		LayoutInflater inflater = (LayoutInflater) context
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		View v = inflater.inflate(R.layout.balloon_map_overlay, layout);
-		title = (TextView) v.findViewById(R.id.balloon_item_title);
-		snippet = (TextView) v.findViewById(R.id.balloon_item_snippet);
+		View v = inflater.inflate(R.layout.image_balloon_map_overlay, layout);
+		title = (TextView) v.findViewById(R.id.image_balloon_item_title);
+		snippet = (TextView) v.findViewById(R.id.image_balloon_item_snippet);
+		imageView = (ImageView) v.findViewById(R.id.image_balloon_item_imageview);
 
 		ImageView close = (ImageView) v.findViewById(R.id.close_img_button);
 		close.setOnClickListener(new OnClickListener() {
@@ -90,9 +89,9 @@ public class BalloonOverlayView extends FrameLayout {
 	 * Sets the view data from a given overlay item.
 	 * 
 	 * @param item - The overlay item containing the relevant view data 
-	 * (title and snippet). 
+	 * (title, snippet & image). 
 	 */
-	public void setData(OverlayItem item) {
+	public void setData(ImageOverlayItem item) {
 		
 		layout.setVisibility(VISIBLE);
 		if (item.getTitle() != null) {
@@ -106,6 +105,12 @@ public class BalloonOverlayView extends FrameLayout {
 			snippet.setText(item.getSnippet());
 		} else {
 			snippet.setVisibility(GONE);
+		}
+		if (item.getBitmap() != null) {
+			imageView.setVisibility(VISIBLE);
+			imageView.setImageDrawable(item.getBitmap());
+		} else {
+			imageView.setVisibility(GONE);
 		}
 		
 	}

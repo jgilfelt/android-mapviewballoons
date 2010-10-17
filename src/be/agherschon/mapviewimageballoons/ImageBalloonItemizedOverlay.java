@@ -1,5 +1,5 @@
 /***
- * Copyright (c) 2010 readyState Software Ltd
+ * Copyright (c) 2010 Alexandre Gherschon
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may
  * not use this file except in compliance with the License. You may obtain
@@ -13,7 +13,7 @@
  * 
  */
 
-package com.readystatesoftware.mapviewballoons;
+package be.agherschon.mapviewimageballoons;
 
 import java.lang.reflect.Method;
 import java.util.List;
@@ -25,25 +25,24 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup.LayoutParams;
-import be.agherschon.mapviewimageballoons.ImageBalloonItemizedOverlay;
 
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.ItemizedOverlay;
 import com.google.android.maps.MapController;
 import com.google.android.maps.MapView;
 import com.google.android.maps.Overlay;
-import com.google.android.maps.OverlayItem;
+import com.readystatesoftware.mapviewballoons.BalloonItemizedOverlay;
 
 /**
- * An abstract extension of ItemizedOverlay for displaying an information balloon
+ * An abstract extension of ItemizedOverlay for displaying an information image balloon
  * upon screen-tap of each marker overlay.
  * 
- * @author Jeff Gilfelt
+ * @author Alexandre Gherschon
  */
-public abstract class BalloonItemizedOverlay<Item> extends ItemizedOverlay<OverlayItem> {
+public abstract class ImageBalloonItemizedOverlay<Item> extends ItemizedOverlay<ImageOverlayItem> {
 
 	private MapView mapView;
-	private BalloonOverlayView balloonView;
+	private ImageBalloonOverlayView imageBalloonView;
 	private View clickRegion;
 	private int viewOffset;
 	final MapController mc;
@@ -54,7 +53,7 @@ public abstract class BalloonItemizedOverlay<Item> extends ItemizedOverlay<Overl
 	 * @param defaultMarker - A bounded Drawable to be drawn on the map for each item in the overlay.
 	 * @param mapView - The view upon which the overlay items are to be drawn.
 	 */
-	public BalloonItemizedOverlay(Drawable defaultMarker, MapView mapView) {
+	public ImageBalloonItemizedOverlay(Drawable defaultMarker, MapView mapView) {
 		super(defaultMarker);
 		this.mapView = mapView;
 		viewOffset = 0;
@@ -98,22 +97,22 @@ public abstract class BalloonItemizedOverlay<Item> extends ItemizedOverlay<Overl
 		thisIndex = index;
 		point = createItem(index).getPoint();
 		
-		if (balloonView == null) {
-			balloonView = new BalloonOverlayView(mapView.getContext(), viewOffset);
-			clickRegion = (View) balloonView.findViewById(R.id.balloon_inner_layout);
+		if (imageBalloonView == null) {
+			imageBalloonView = new ImageBalloonOverlayView(mapView.getContext(), viewOffset);
+			clickRegion = (View) imageBalloonView.findViewById(R.id.image_balloon_inner_layout);
 			isRecycled = false;
 		} else {
 			isRecycled = true;
 		}
 	
-		balloonView.setVisibility(View.GONE);
+		imageBalloonView.setVisibility(View.GONE);
 		
 		List<Overlay> mapOverlays = mapView.getOverlays();
 		if (mapOverlays.size() > 1) {
 			hideOtherBalloons(mapOverlays);
 		}
 		
-		balloonView.setData(createItem(index));
+		imageBalloonView.setData(createItem(index));
 		
 		MapView.LayoutParams params = new MapView.LayoutParams(
 				LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, point,
@@ -122,15 +121,19 @@ public abstract class BalloonItemizedOverlay<Item> extends ItemizedOverlay<Overl
 		
 		setBalloonTouchListener(thisIndex);
 		
-		balloonView.setVisibility(View.VISIBLE);
+		imageBalloonView.setVisibility(View.VISIBLE);
 
 		if (isRecycled) {
-			balloonView.setLayoutParams(params);
+			imageBalloonView.setLayoutParams(params);
 		} else {
-			mapView.addView(balloonView, params);
+			mapView.addView(imageBalloonView, params);
 		}
 		
+		// from this geopoint, creates another geopoint to be able to see the whole pop-up
+		//GeoPoint virtualPoint = new GeoPoint(point.getLatitudeE6() + 2500 , point.getLongitudeE6());
+		
 		mc.animateTo(point);
+
 		
 		return true;
 	}
@@ -139,8 +142,8 @@ public abstract class BalloonItemizedOverlay<Item> extends ItemizedOverlay<Overl
 	 * Sets the visibility of this overlay's balloon view to GONE. 
 	 */
 	public void hideBalloon() {
-		if (balloonView != null) {
-			balloonView.setVisibility(View.GONE);
+		if (imageBalloonView != null) {
+			imageBalloonView.setVisibility(View.GONE);
 		}
 	}
 	
@@ -153,14 +156,14 @@ public abstract class BalloonItemizedOverlay<Item> extends ItemizedOverlay<Overl
 	private void hideOtherBalloons(List<Overlay> overlays) {
 		
 		for (Overlay overlay : overlays) {
-			if (overlay instanceof BalloonItemizedOverlay<?> && overlay != this) {
-				((BalloonItemizedOverlay<?>) overlay).hideBalloon();
-			}
-			if (overlay instanceof ImageBalloonItemizedOverlay<?>) {
+			if (overlay instanceof ImageBalloonItemizedOverlay<?> && overlay != this) {
 				((ImageBalloonItemizedOverlay<?>) overlay).hideBalloon();
 			}
-
+			if (overlay instanceof BalloonItemizedOverlay<?>) {
+				((BalloonItemizedOverlay<?>) overlay).hideBalloon();
+			}
 		}
+		
 		
 	}
 	
@@ -179,7 +182,7 @@ public abstract class BalloonItemizedOverlay<Item> extends ItemizedOverlay<Overl
 			clickRegion.setOnTouchListener(new OnTouchListener() {
 				public boolean onTouch(View v, MotionEvent event) {
 					
-					View l =  ((View) v.getParent()).findViewById(R.id.balloon_main_layout);
+					View l =  ((View) v.getParent()).findViewById(R.id.image_balloon_main_layout);
 					Drawable d = l.getBackground();
 					
 					if (event.getAction() == MotionEvent.ACTION_DOWN) {

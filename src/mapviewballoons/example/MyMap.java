@@ -15,10 +15,14 @@
 
 package mapviewballoons.example;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import be.agherschon.mapviewimageballoons.ImageOverlayItem;
 
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapActivity;
@@ -35,6 +39,8 @@ public class MyMap extends MapActivity {
 	Drawable drawable2;
 	MyItemizedOverlay itemizedOverlay;
 	MyItemizedOverlay itemizedOverlay2;
+	
+	MyImageBalloonItemizedOverlay imageBalloonItemizedOverlay ;
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
@@ -79,8 +85,19 @@ public class MyMap extends MapActivity {
 		
 		mapOverlays.add(itemizedOverlay2);
 		
+		// third overlay, with an image
+		imageBalloonItemizedOverlay = new MyImageBalloonItemizedOverlay(drawable, mapView);
+		
+		GeoPoint point5 = new GeoPoint((int)(51.51942*1E6),(int)(-0.08396*1E6));		
+		Drawable image = this.getResources().getDrawable(R.drawable.camera);
+		ImageOverlayItem imageOverlayItem = new ImageOverlayItem(point5, "Circulation status", "17/10/2010 14:09:12", image);
+
+		imageBalloonItemizedOverlay.addOverlay(imageOverlayItem);
+		
+		mapOverlays.add(imageBalloonItemizedOverlay);	
+		
 		final MapController mc = mapView.getController();
-		mc.animateTo(point2);
+		mc.animateTo(point5);
 		mc.setZoom(16);
 		
     }
