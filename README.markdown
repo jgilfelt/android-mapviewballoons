@@ -21,7 +21,7 @@ The repository contains a working sample application project which fully demonst
 Implementation
 --------------
 
-As of version 1.1, android-mapviewballoons is an Android Library project. Refer to 'Referencing a library project from an application' in http://developer.android.com/guide/developing/eclipse-adt.html#libraryProject for instructions on how to include it in your own Android project. Ensure you have the latest Android SDK, tools and Eclipse plugin installed.
+As of version 1.1, android-mapviewballoons is an Android Library project. Refer to 'Referencing a library project from an application' in [this document](http://developer.android.com/guide/developing/eclipse-adt.html#libraryProject) for instructions on how to include it in your own Android project. Ensure you have the latest Android SDK, tools and Eclipse plugin installed.
 
 Whats Missing?
 --------------
