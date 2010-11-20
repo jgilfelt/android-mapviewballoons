@@ -16,27 +16,12 @@ Create a subclass of `BalloonItemizedOverlay` in the same way you would do for t
 
 The data displayed in each balloon is mapped to the title and snippet arguments you provide to the constructor of each `OverlayItem`.
 
-The project repository contains a working sample application which fully demonstrates its usage.
+The repository contains a working sample application project which fully demonstrates its usage.
 
 Implementation
 --------------
 
-Due to the resource file dependencies, there unfortunately isn't a single redistributable file package. You must copy the following into your project:
-
-<pre>
-src/com/readystatesoftware/mapviewballoons/BalloonItemizedOverlay.java
-src/com/readystatesoftware/mapviewballoons/BalloonOverlayView.java
-res/drawable/balloon_overlay_bg_selector.xml
-res/drawable-hdpi/balloon_overlay_close.png
-res/drawable-hdpi/balloon_overlay_focused.9.png
-res/drawable-hdpi/balloon_overlay_unfocused.9.png
-res/drawable-mdpi/balloon_overlay_close.png
-res/drawable-mdpi/balloon_overlay_focused.9.png
-res/drawable-mdpi/balloon_overlay_unfocused.9.png
-res/layout/balloon_map_overlay.xml
-</pre>
-
-Ensure your projects auto-generated R class is imported within BalloonItemizedOverlay.java and BalloonOverlayView.java.
+As of version 1.1, android-mapviewballoons is an Android Library project. Refer to 'Referencing a library project from an application' in http://developer.android.com/guide/developing/eclipse-adt.html#libraryProject for instructions on how to include it in your own Android project. Ensure you have the latest Android SDK, tools and Eclipse plugin installed.
 
 Whats Missing?
 --------------

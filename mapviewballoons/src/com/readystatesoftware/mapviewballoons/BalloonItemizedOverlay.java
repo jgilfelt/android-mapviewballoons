@@ -15,9 +15,9 @@
 
 package com.readystatesoftware.mapviewballoons;
 
-import mapviewballoons.example.R; 
 
-import java.lang.reflect.Method;
+
+import java.lang.reflect.Method; 
 import java.util.List;
 
 import android.graphics.drawable.Drawable;

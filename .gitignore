@@ -1,3 +1,7 @@
-local.properties
-bin/
-gen/
+*.DS_Store
+mapviewballoons/local.properties
+mapviewballoons/bin/
+mapviewballoons/gen/
+mapviewballoons-example/local.properties
+mapviewballoons-example/bin/
+mapviewballoons-example/gen/

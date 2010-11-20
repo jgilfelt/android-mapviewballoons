@@ -15,8 +15,6 @@
 
 package com.readystatesoftware.mapviewballoons;
 
-import mapviewballoons.example.R;
-
 import android.content.Context;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -67,7 +65,7 @@ public class BalloonOverlayView extends FrameLayout {
 
 		LayoutInflater inflater = (LayoutInflater) context
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		View v = inflater.inflate(R.layout.balloon_map_overlay, layout);
+		View v = inflater.inflate(R.layout.balloon_overlay, layout);
 		title = (TextView) v.findViewById(R.id.balloon_item_title);
 		snippet = (TextView) v.findViewById(R.id.balloon_item_snippet);
 
