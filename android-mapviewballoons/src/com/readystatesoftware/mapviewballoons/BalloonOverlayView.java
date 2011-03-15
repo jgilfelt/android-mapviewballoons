@@ -42,7 +42,7 @@ import com.google.android.maps.OverlayItem;
  * @author Jeff Gilfelt
  *
  */
-public class BalloonOverlayView extends FrameLayout {
+public class BalloonOverlayView<Item extends OverlayItem> extends FrameLayout {
 
 	private LinearLayout layout;
 	private TextView title;
@@ -90,7 +90,7 @@ public class BalloonOverlayView extends FrameLayout {
 	 * @param item - The overlay item containing the relevant view data 
 	 * (title and snippet). 
 	 */
-	public void setData(OverlayItem item) {
+	public void setData(Item item) {
 		
 		layout.setVisibility(VISIBLE);
 		if (item.getTitle() != null) {

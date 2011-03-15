@@ -40,10 +40,10 @@ import com.google.android.maps.OverlayItem;
  * 
  * @author Jeff Gilfelt
  */
-public abstract class BalloonItemizedOverlay<Item> extends ItemizedOverlay<OverlayItem> {
+public abstract class BalloonItemizedOverlay<Item extends OverlayItem> extends ItemizedOverlay<Item> {
 
 	private MapView mapView;
-	private BalloonOverlayView balloonView;
+	private BalloonOverlayView<Item> balloonView;
 	private View clickRegion;
 	private int viewOffset;
 	final MapController mc;
@@ -99,7 +99,7 @@ public abstract class BalloonItemizedOverlay<Item> extends ItemizedOverlay<Overl
 		point = createItem(index).getPoint();
 		
 		if (balloonView == null) {
-			balloonView = new BalloonOverlayView(mapView.getContext(), viewOffset);
+			balloonView = createBalloonOverlayView();
 			clickRegion = (View) balloonView.findViewById(R.id.balloon_inner_layout);
 			isRecycled = false;
 		} else {
@@ -133,6 +133,14 @@ public abstract class BalloonItemizedOverlay<Item> extends ItemizedOverlay<Overl
 		mc.animateTo(point);
 		
 		return true;
+	}
+
+	/**
+	 * Creates the balloon view. Override to create a sub-classed view that
+	 * can populate additional sub-views.
+	 */
+	protected BalloonOverlayView<Item> createBalloonOverlayView() {
+		return new BalloonOverlayView<Item>(mapView.getContext(), viewOffset);
 	}
 	
 	/**
