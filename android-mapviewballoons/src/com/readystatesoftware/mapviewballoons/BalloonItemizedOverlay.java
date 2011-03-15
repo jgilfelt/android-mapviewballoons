@@ -73,6 +73,9 @@ public abstract class BalloonItemizedOverlay<Item extends OverlayItem> extends I
 	public void setBalloonBottomOffset(int pixels) {
 		viewOffset = pixels;
 	}
+	public int getBalloonBottomOffset() {
+		return viewOffset;
+	}
 	
 	/**
 	 * Override this method to handle a "tap" on a balloon. By default, does nothing 
@@ -140,7 +143,15 @@ public abstract class BalloonItemizedOverlay<Item extends OverlayItem> extends I
 	 * can populate additional sub-views.
 	 */
 	protected BalloonOverlayView<Item> createBalloonOverlayView() {
-		return new BalloonOverlayView<Item>(mapView.getContext(), viewOffset);
+		return new BalloonOverlayView<Item>(getMapView().getContext(), getBalloonBottomOffset());
+	}
+	
+	/**
+	 * Expose map view to subclasses.
+	 * Helps with creation of balloon views. 
+	 */
+	protected MapView getMapView() {
+		return mapView;
 	}
 	
 	/**
