@@ -82,9 +82,10 @@ public abstract class BalloonItemizedOverlay<Item extends OverlayItem> extends I
 	 * and returns false.
 	 * 
 	 * @param index - The index of the item whose balloon is tapped.
+	 * @param item TODO
 	 * @return true if you handled the tap, otherwise false.
 	 */
-	protected boolean onBalloonTap(int index) {
+	protected boolean onBalloonTap(int index, Item item) {
 		return false;
 	}
 
@@ -99,7 +100,8 @@ public abstract class BalloonItemizedOverlay<Item extends OverlayItem> extends I
 		GeoPoint point;
 		
 		thisIndex = index;
-		point = createItem(index).getPoint();
+		Item currentItem = createItem(index);
+		point = currentItem.getPoint();
 		
 		if (balloonView == null) {
 			balloonView = createBalloonOverlayView();
@@ -116,14 +118,14 @@ public abstract class BalloonItemizedOverlay<Item extends OverlayItem> extends I
 			hideOtherBalloons(mapOverlays);
 		}
 		
-		balloonView.setData(createItem(index));
+		balloonView.setData(currentItem);
 		
 		MapView.LayoutParams params = new MapView.LayoutParams(
 				LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, point,
 				MapView.LayoutParams.BOTTOM_CENTER);
 		params.mode = MapView.LayoutParams.MODE_MAP;
 		
-		setBalloonTouchListener(thisIndex);
+		setBalloonTouchListener(thisIndex, currentItem);
 		
 		balloonView.setVisibility(View.VISIBLE);
 
@@ -184,8 +186,9 @@ public abstract class BalloonItemizedOverlay<Item extends OverlayItem> extends I
 	 * overridden onBalloonTap if implemented.
 	 * 
 	 * @param thisIndex - The index of the item whose balloon is tapped.
+	 * @param thisItem TODO
 	 */
-	private void setBalloonTouchListener(final int thisIndex) {
+	private void setBalloonTouchListener(final int thisIndex, final Item thisItem) {
 		
 		try {
 			@SuppressWarnings("unused")
@@ -209,7 +212,7 @@ public abstract class BalloonItemizedOverlay<Item extends OverlayItem> extends I
 							d.invalidateSelf();
 						}
 						// call overridden method
-						onBalloonTap(thisIndex);
+						onBalloonTap(thisIndex, thisItem);
 						return true;
 					} else {
 						return false;
