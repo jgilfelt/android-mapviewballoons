@@ -98,40 +98,9 @@ public abstract class BalloonItemizedOverlay<Item extends OverlayItem> extends I
 		currentFocussedIndex = index;
 		currentFocussedItem = createItem(index);
 		
-		boolean isRecycled;
-		if (balloonView == null) {
-			balloonView = createBalloonOverlayView();
-			clickRegion = (View) balloonView.findViewById(R.id.balloon_inner_layout);
-			clickRegion.setOnTouchListener(createBalloonTouchListener());
-			isRecycled = false;
-		} else {
-			isRecycled = true;
-		}
-	
-		balloonView.setVisibility(View.GONE);
+		createAndDisplayBalloonOverlay();
 		
-		List<Overlay> mapOverlays = mapView.getOverlays();
-		if (mapOverlays.size() > 1) {
-			hideOtherBalloons(mapOverlays);
-		}
-		
-		balloonView.setData(currentFocussedItem);
-		
-		GeoPoint point = currentFocussedItem.getPoint();
-		MapView.LayoutParams params = new MapView.LayoutParams(
-				LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, point,
-				MapView.LayoutParams.BOTTOM_CENTER);
-		params.mode = MapView.LayoutParams.MODE_MAP;
-		
-		balloonView.setVisibility(View.VISIBLE);
-
-		if (isRecycled) {
-			balloonView.setLayoutParams(params);
-		} else {
-			mapView.addView(balloonView, params);
-		}
-		
-		mc.animateTo(point);
+		mc.animateTo(currentFocussedItem.getPoint());
 		
 		return true;
 	}
@@ -208,6 +177,73 @@ public abstract class BalloonItemizedOverlay<Item extends OverlayItem> extends I
 				
 			}
 		};
+	}
+	
+	/* (non-Javadoc)
+	 * @see com.google.android.maps.ItemizedOverlay#getFocus()
+	 */
+	@Override
+	public Item getFocus() {
+		return currentFocussedItem;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.google.android.maps.ItemizedOverlay#setFocus(Item)
+	 */
+	@Override
+	public void setFocus(Item item) {
+		currentFocussedItem = item;
+		
+		if (currentFocussedItem == null){
+			hideBalloon();
+		}
+		else{
+			createAndDisplayBalloonOverlay();
+		}	
+	}
+	
+
+	/**
+	 * Creates and displays the balloon overlay by recycling the current 
+	 * balloon or by inflating it from xml. 
+	 * @return true if the balloon was recycled false otherwise 
+	 */
+	private boolean createAndDisplayBalloonOverlay(){
+		boolean isRecycled;
+		if (balloonView == null) {
+			balloonView = createBalloonOverlayView();
+			clickRegion = (View) balloonView.findViewById(R.id.balloon_inner_layout);
+			clickRegion.setOnTouchListener(createBalloonTouchListener());
+			isRecycled = false;
+		} else {
+			isRecycled = true;
+		}
+	
+		balloonView.setVisibility(View.GONE);
+		
+		List<Overlay> mapOverlays = mapView.getOverlays();
+		if (mapOverlays.size() > 1) {
+			hideOtherBalloons(mapOverlays);
+		}
+		
+		if (currentFocussedItem != null)
+			balloonView.setData(currentFocussedItem);
+		
+		GeoPoint point = currentFocussedItem.getPoint();
+		MapView.LayoutParams params = new MapView.LayoutParams(
+				LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, point,
+				MapView.LayoutParams.BOTTOM_CENTER);
+		params.mode = MapView.LayoutParams.MODE_MAP;
+		
+		balloonView.setVisibility(View.VISIBLE);
+		
+		if (isRecycled) {
+			balloonView.setLayoutParams(params);
+		} else {
+			mapView.addView(balloonView, params);
+		}
+		
+		return isRecycled;
 	}
 	
 }
