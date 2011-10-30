@@ -30,11 +30,4 @@
 		<nature>com.android.ide.eclipse.adt.AndroidNature</nature>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>android-mapviewballoons_src</name>
-			<type>2</type>
-			<locationURI>_android_android_mapviewballoons_9ae9cbc7/src</locationURI>
-		</link>
-	</linkedResources>
 </projectDescription>
