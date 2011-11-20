@@ -152,6 +152,10 @@ public abstract class BalloonItemizedOverlay<Item extends OverlayItem> extends I
 	 */
 	private OnTouchListener createBalloonTouchListener() {
 		return new OnTouchListener() {
+			
+			float startX;
+			float startY;
+			
 			public boolean onTouch(View v, MotionEvent event) {
 				
 				View l =  ((View) v.getParent()).findViewById(R.id.balloon_main_layout);
@@ -162,14 +166,19 @@ public abstract class BalloonItemizedOverlay<Item extends OverlayItem> extends I
 					if (d.setState(states)) {
 						d.invalidateSelf();
 					}
+					startX = event.getX();
+					startY = event.getY();
 					return true;
 				} else if (event.getAction() == MotionEvent.ACTION_UP) {
 					int newStates[] = {};
 					if (d.setState(newStates)) {
 						d.invalidateSelf();
 					}
-					// call overridden method
-					onBalloonTap(currentFocussedIndex, currentFocussedItem);
+					if (Math.abs(startX - event.getX()) < 40 && 
+							Math.abs(startY - event.getY()) < 40 ) {
+						// call overridden method
+						onBalloonTap(currentFocussedIndex, currentFocussedItem);
+					}
 					return true;
 				} else {
 					return false;
