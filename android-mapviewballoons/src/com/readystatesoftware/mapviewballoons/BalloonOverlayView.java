@@ -19,6 +19,7 @@ import android.content.Context;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -63,9 +64,21 @@ public class BalloonOverlayView<Item extends OverlayItem> extends FrameLayout {
 		layout = new LinearLayout(context);
 		layout.setVisibility(VISIBLE);
 
+		setupView(context, layout);
+
+		FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(
+				LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+		params.gravity = Gravity.NO_GRAVITY;
+
+		addView(layout, params);
+
+	}
+
+	protected void setupView(Context context, ViewGroup parent) {
+		
 		LayoutInflater inflater = (LayoutInflater) context
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		View v = inflater.inflate(R.layout.balloon_overlay, layout);
+		View v = inflater.inflate(R.layout.balloon_overlay, parent);
 		title = (TextView) v.findViewById(R.id.balloon_item_title);
 		snippet = (TextView) v.findViewById(R.id.balloon_item_snippet);
 
@@ -75,13 +88,7 @@ public class BalloonOverlayView<Item extends OverlayItem> extends FrameLayout {
 				layout.setVisibility(GONE);
 			}
 		});
-
-		FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(
-				LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-		params.gravity = Gravity.NO_GRAVITY;
-
-		addView(layout, params);
-
+		
 	}
 	
 	/**

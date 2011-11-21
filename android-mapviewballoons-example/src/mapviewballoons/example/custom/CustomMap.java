@@ -18,7 +18,6 @@ package mapviewballoons.example.custom;
 import java.util.List;
 
 import mapviewballoons.example.R;
-
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
@@ -27,7 +26,6 @@ import com.google.android.maps.MapActivity;
 import com.google.android.maps.MapController;
 import com.google.android.maps.MapView;
 import com.google.android.maps.Overlay;
-import com.google.android.maps.OverlayItem;
 
 public class CustomMap extends MapActivity {
 
@@ -54,13 +52,14 @@ public class CustomMap extends MapActivity {
 		itemizedOverlay = new CustomItemizedOverlay(drawable, mapView);
 		
 		GeoPoint point = new GeoPoint((int)(51.5174723*1E6),(int)(-0.0899537*1E6));
-		OverlayItem overlayItem = new OverlayItem(point, "Tomorrow Never Dies (1997)", 
-				"(M gives Bond his mission in Daimler car)");
+		CustomOverlayItem overlayItem = new CustomOverlayItem(point, "Tomorrow Never Dies (1997)", 
+				"(M gives Bond his mission in Daimler car)", 
+				"http://ia.media-imdb.com/images/M/MV5BMzk2OTg4MTk1NF5BMl5BanBnXkFtZTcwNjExNTgzNA@@._V1._SX40_CR0,0,40,54_.jpg");
 		itemizedOverlay.addOverlay(overlayItem);
 		
 		GeoPoint point2 = new GeoPoint((int)(51.515259*1E6),(int)(-0.086623*1E6));
-		OverlayItem overlayItem2 = new OverlayItem(point2, "GoldenEye (1995)", 
-				"(Interiors Russian defence ministry council chambers in St Petersburg)");		
+		CustomOverlayItem overlayItem2 = new CustomOverlayItem(point2, "GoldenEye (1995)", 
+				"(Interiors Russian defence ministry council chambers in St Petersburg)", null);		
 		itemizedOverlay.addOverlay(overlayItem2);
 		
 		mapOverlays.add(itemizedOverlay);
@@ -70,13 +69,13 @@ public class CustomMap extends MapActivity {
 		itemizedOverlay2 = new CustomItemizedOverlay(drawable2, mapView);
 		
 		GeoPoint point3 = new GeoPoint((int)(51.513329*1E6),(int)(-0.08896*1E6));
-		OverlayItem overlayItem3 = new OverlayItem(point3, "Sliding Doors (1998)", 
-				"(interiors)");
+		CustomOverlayItem overlayItem3 = new CustomOverlayItem(point3, "Sliding Doors (1998)", 
+				"(interiors)", null);
 		itemizedOverlay2.addOverlay(overlayItem3);
 		
 		GeoPoint point4 = new GeoPoint((int)(51.51738*1E6),(int)(-0.08186*1E6));
-		OverlayItem overlayItem4 = new OverlayItem(point4, "Mission: Impossible (1996)", 
-				"(Ethan & Jim cafe meeting)");		
+		CustomOverlayItem overlayItem4 = new CustomOverlayItem(point4, "Mission: Impossible (1996)", 
+				"(Ethan & Jim cafe meeting)", null);		
 		itemizedOverlay2.addOverlay(overlayItem4);
 		
 		mapOverlays.add(itemizedOverlay2);

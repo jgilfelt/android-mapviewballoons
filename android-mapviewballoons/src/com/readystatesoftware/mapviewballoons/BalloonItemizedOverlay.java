@@ -211,7 +211,6 @@ public abstract class BalloonItemizedOverlay<Item extends OverlayItem> extends I
 		}	
 	}
 	
-
 	/**
 	 * Creates and displays the balloon overlay by recycling the current 
 	 * balloon or by inflating it from xml. 

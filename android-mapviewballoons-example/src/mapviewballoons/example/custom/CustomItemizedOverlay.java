@@ -25,10 +25,11 @@ import com.google.android.maps.MapView;
 import com.google.android.maps.OverlayItem;
 
 import com.readystatesoftware.mapviewballoons.BalloonItemizedOverlay;
+import com.readystatesoftware.mapviewballoons.BalloonOverlayView;
 
-public class CustomItemizedOverlay extends BalloonItemizedOverlay<OverlayItem> {
+public class CustomItemizedOverlay<Item extends OverlayItem> extends BalloonItemizedOverlay<CustomOverlayItem> {
 
-	private ArrayList<OverlayItem> m_overlays = new ArrayList<OverlayItem>();
+	private ArrayList<CustomOverlayItem> m_overlays = new ArrayList<CustomOverlayItem>();
 	private Context c;
 	
 	public CustomItemizedOverlay(Drawable defaultMarker, MapView mapView) {
@@ -36,13 +37,13 @@ public class CustomItemizedOverlay extends BalloonItemizedOverlay<OverlayItem> {
 		c = mapView.getContext();
 	}
 
-	public void addOverlay(OverlayItem overlay) {
+	public void addOverlay(CustomOverlayItem overlay) {
 	    m_overlays.add(overlay);
 	    populate();
 	}
 
 	@Override
-	protected OverlayItem createItem(int i) {
+	protected CustomOverlayItem createItem(int i) {
 		return m_overlays.get(i);
 	}
 
@@ -52,10 +53,23 @@ public class CustomItemizedOverlay extends BalloonItemizedOverlay<OverlayItem> {
 	}
 
 	@Override
-	protected boolean onBalloonTap(int index, OverlayItem item) {
+	protected boolean onBalloonTap(int index, CustomOverlayItem item) {
 		Toast.makeText(c, "onBalloonTap for overlay index " + index,
 				Toast.LENGTH_LONG).show();
 		return true;
 	}
+
+	@Override
+	protected BalloonOverlayView<CustomOverlayItem> createBalloonOverlayView() {
+		// TODO Auto-generated method stub
+		//return super.createBalloonOverlayView();
+		return new BalloonOverlayView<CustomOverlayItem>(getMapView().getContext(), getBalloonBottomOffset());
+	}
+
+	
+
+	
+	
+	
 	
 }
