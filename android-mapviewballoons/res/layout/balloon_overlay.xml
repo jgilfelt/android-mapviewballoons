@@ -17,7 +17,7 @@
 		android:orientation="vertical" 
 		android:layout_weight="1"
 		android:paddingTop="10dip" 
-		android:id="@+id/balloon_inner_layout">
+		android:id="@id/balloon_inner_layout">
 		<TextView android:layout_height="wrap_content"
 			android:layout_width="wrap_content" 
 			android:id="@+id/balloon_item_title"
@@ -35,7 +35,7 @@
 	<ImageView android:layout_width="wrap_content"
 		android:layout_height="wrap_content" 
 		android:src="@drawable/balloon_overlay_close"
-		android:id="@+id/close_img_button" 
+		android:id="@id/balloon_close" 
 		android:paddingLeft="10dip"
 		android:paddingBottom="10dip" 
 		android:paddingRight="8dip"
