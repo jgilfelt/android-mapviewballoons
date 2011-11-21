@@ -63,7 +63,7 @@ public class CustomItemizedOverlay<Item extends OverlayItem> extends BalloonItem
 	protected BalloonOverlayView<CustomOverlayItem> createBalloonOverlayView() {
 		// TODO Auto-generated method stub
 		//return super.createBalloonOverlayView();
-		return new BalloonOverlayView<CustomOverlayItem>(getMapView().getContext(), getBalloonBottomOffset());
+		return new CustomBalloonOverlayView<CustomOverlayItem>(getMapView().getContext(), getBalloonBottomOffset());
 	}
 
 	

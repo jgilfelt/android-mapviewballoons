@@ -74,7 +74,7 @@ public class BalloonOverlayView<Item extends OverlayItem> extends FrameLayout {
 
 	}
 
-	protected void setupView(Context context, ViewGroup parent) {
+	protected void setupView(Context context, final ViewGroup parent) {
 		
 		LayoutInflater inflater = (LayoutInflater) context
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -85,7 +85,7 @@ public class BalloonOverlayView<Item extends OverlayItem> extends FrameLayout {
 		ImageView close = (ImageView) v.findViewById(R.id.balloon_close);
 		close.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				layout.setVisibility(GONE);
+				parent.setVisibility(GONE);
 			}
 		});
 		
@@ -100,6 +100,11 @@ public class BalloonOverlayView<Item extends OverlayItem> extends FrameLayout {
 	public void setData(Item item) {
 		
 		layout.setVisibility(VISIBLE);
+		setBalloonData(item, layout);
+		
+	}
+	
+	protected void setBalloonData(Item item, ViewGroup parent) {
 		if (item.getTitle() != null) {
 			title.setVisibility(VISIBLE);
 			title.setText(item.getTitle());
@@ -114,7 +119,6 @@ public class BalloonOverlayView<Item extends OverlayItem> extends FrameLayout {
 			snippet.setText("");
 			snippet.setVisibility(INVISIBLE);
 		}
-		
 	}
 
 }
