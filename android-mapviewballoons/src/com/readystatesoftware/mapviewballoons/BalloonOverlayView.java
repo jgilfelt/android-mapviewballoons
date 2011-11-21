@@ -29,16 +29,6 @@ import com.google.android.maps.OverlayItem;
 
 /**
  * A view representing a MapView marker information balloon.
- * <p>
- * This class has a number of Android resource dependencies:
- * <ul>
- * <li>drawable/balloon_overlay_bg_selector.xml</li>
- * <li>drawable/balloon_overlay_close.png</li>
- * <li>drawable/balloon_overlay_focused.9.png</li>
- * <li>drawable/balloon_overlay_unfocused.9.png</li>
- * <li>layout/balloon_map_overlay.xml</li>
- * </ul>
- * </p>
  * 
  * @author Jeff Gilfelt
  *

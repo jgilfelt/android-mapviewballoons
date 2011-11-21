@@ -25,9 +25,7 @@ public class Main extends ListActivity implements OnItemClickListener {
 
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-		
 		Intent intent = null;
-		
 		switch (position) {
 		case 0:
 			intent = new Intent(this, MyMap.class);
@@ -40,7 +38,6 @@ public class Main extends ListActivity implements OnItemClickListener {
 		default:
 			break;
 		}
-		
 	}
 	
 }

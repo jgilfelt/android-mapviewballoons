@@ -1,5 +1,5 @@
 /***
- * Copyright (c) 2010 readyState Software Ltd
+ * Copyright (c) 2011 readyState Software Ltd
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may
  * not use this file except in compliance with the License. You may obtain
@@ -61,15 +61,7 @@ public class CustomItemizedOverlay<Item extends OverlayItem> extends BalloonItem
 
 	@Override
 	protected BalloonOverlayView<CustomOverlayItem> createBalloonOverlayView() {
-		// TODO Auto-generated method stub
-		//return super.createBalloonOverlayView();
 		return new CustomBalloonOverlayView<CustomOverlayItem>(getMapView().getContext(), getBalloonBottomOffset());
 	}
 
-	
-
-	
-	
-	
-	
 }

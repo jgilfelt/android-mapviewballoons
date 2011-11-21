@@ -19,10 +19,11 @@
 
         <ImageView
             android:id="@+id/balloon_item_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="40dip"
+            android:layout_height="54dip"
             android:src="@drawable/icon"
-            android:paddingTop="10dip" />
+            android:paddingTop="10dip"
+            android:paddingRight="10dip" />
 
         <LinearLayout
             android:layout_width="0dp"
