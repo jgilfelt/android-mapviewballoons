@@ -47,14 +47,17 @@ public class CustomBalloonOverlayView<Item extends OverlayItem> extends BalloonO
 	@Override
 	protected void setupView(Context context, final ViewGroup parent) {
 		
+		// inflate our custom layout into parent
 		LayoutInflater inflater = (LayoutInflater) context
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		View v = inflater.inflate(R.layout.custom_balloon_overlay, parent);
 		
+		// setup our fields
 		title = (TextView) v.findViewById(R.id.balloon_item_title);
 		snippet = (TextView) v.findViewById(R.id.balloon_item_snippet);
 		image = (ImageView) v.findViewById(R.id.balloon_item_image);
 
+		// implement balloon close
 		ImageView close = (ImageView) v.findViewById(R.id.balloon_close);
 		close.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
@@ -67,9 +70,12 @@ public class CustomBalloonOverlayView<Item extends OverlayItem> extends BalloonO
 	@Override
 	protected void setBalloonData(CustomOverlayItem item, ViewGroup parent) {
 		
+		// map our custom item data to fields
 		title.setText(item.getTitle());
 		snippet.setText(item.getSnippet());
-				
+		
+		// get remote image from network.
+		// bitmap results would normally be cached, but this is good enough for demo purpose.
 		image.setImageResource(R.drawable.icon);
 		new FetchImageTask() { 
 	        protected void onPostExecute(Bitmap result) {

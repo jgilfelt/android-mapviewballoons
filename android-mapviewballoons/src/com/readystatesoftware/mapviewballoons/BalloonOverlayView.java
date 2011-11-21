@@ -64,6 +64,13 @@ public class BalloonOverlayView<Item extends OverlayItem> extends FrameLayout {
 
 	}
 
+	/**
+	 * Inflate and initialize the BalloonOverlayView UI. Override this method
+	 * to provide a custom view/layout for the balloon. 
+	 * 
+	 * @param context - The activity context.
+	 * @param parent - The root layout into which you must inflate your view.
+	 */
 	protected void setupView(Context context, final ViewGroup parent) {
 		
 		LayoutInflater inflater = (LayoutInflater) context
@@ -84,16 +91,20 @@ public class BalloonOverlayView<Item extends OverlayItem> extends FrameLayout {
 	/**
 	 * Sets the view data from a given overlay item.
 	 * 
-	 * @param item - The overlay item containing the relevant view data 
-	 * (title and snippet). 
+	 * @param item - The overlay item containing the relevant view data. 
 	 */
 	public void setData(Item item) {
-		
 		layout.setVisibility(VISIBLE);
 		setBalloonData(item, layout);
-		
 	}
 	
+	/**
+	 * Sets the view data from a given overlay item. Override this method to create
+	 * your own data/view mappings.
+	 * 
+	 * @param item - The overlay item containing the relevant view data.
+	 * @param parent - The parent layout for this BalloonOverlayView.
+	 */
 	protected void setBalloonData(Item item, ViewGroup parent) {
 		if (item.getTitle() != null) {
 			title.setVisibility(VISIBLE);

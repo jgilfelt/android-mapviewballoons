@@ -61,6 +61,7 @@ public class CustomItemizedOverlay<Item extends OverlayItem> extends BalloonItem
 
 	@Override
 	protected BalloonOverlayView<CustomOverlayItem> createBalloonOverlayView() {
+		// use our custom balloon view with our custom overlay item type:
 		return new CustomBalloonOverlayView<CustomOverlayItem>(getMapView().getContext(), getBalloonBottomOffset());
 	}
 

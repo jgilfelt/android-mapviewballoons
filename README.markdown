@@ -18,6 +18,17 @@ The data displayed in each balloon is mapped to the title and snippet arguments 
 
 The repository contains a working sample application project which fully demonstrates its usage.
 
+Custom Layouts
+--------------
+
+![custom](http://jeffgilfelt.com/mapviewballoons/device-balloon-custom.png "custom")
+
+You can create your own balloon look & feel and custom data mapping by creating a subclass of `BalloonOverlayView` with a generic type that extends `OverlayItem`. Override the `setupView(Context context, final ViewGroup parent)` method and inflate your own XML layout using `parent` as the root of its view hierachy.
+
+One caveat with custom layouts is that you MUST have a ViewGroup that represents the clickable action area of your balloon whose id property is `android:id="@id/balloon_inner_layout"`.
+
+An example custom layout and data mapping which dowloads an image from the internet and displays it in an ImageView within the layout is included in the sample application project.
+
 Implementation
 --------------
 
@@ -32,13 +43,14 @@ To install the library and sample project in Eclipse:
 Whats Missing?
 --------------
 
-* Custom balloon layouts and data mappings
 * Long press support
-* Trackball support (not tested)
-* Focus events (not tested)
+* Trackball/cursor support
 
-<br />
+Credits
+-------
+
+Author: Jeff Gilfelt
 
 The code in this project is licensed under the Apache Software License 2.0.
 <br />
-Copyright (c) 2010 readyState Software Ltd.
+Copyright (c) 2011 readyState Software Ltd.
