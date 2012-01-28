@@ -93,7 +93,8 @@ public abstract class BalloonItemizedOverlay<Item extends OverlayItem> extends I
 	 * @see com.google.android.maps.ItemizedOverlay#onTap(int)
 	 */
 	@Override
-	protected final boolean onTap(int index) {
+	//protected final boolean onTap(int index) {
+	public final boolean onTap(int index) {
 		
 		currentFocussedIndex = index;
 		currentFocussedItem = createItem(index);
