@@ -88,6 +88,14 @@ public abstract class BalloonItemizedOverlay<Item extends OverlayItem> extends I
 	protected boolean onBalloonTap(int index, Item item) {
 		return false;
 	}
+	
+	/**
+	 * Override this method to perform actions upon an item being tapped before 
+	 * its balloon is displayed.
+	 * 
+	 * @param index - The index of the item tapped.
+	 */
+	protected void onBalloonOpen(int index) {}
 
 	/* (non-Javadoc)
 	 * @see com.google.android.maps.ItemizedOverlay#onTap(int)
@@ -99,6 +107,7 @@ public abstract class BalloonItemizedOverlay<Item extends OverlayItem> extends I
 		currentFocussedIndex = index;
 		currentFocussedItem = createItem(index);
 		
+		onBalloonOpen(index);
 		createAndDisplayBalloonOverlay();
 		
 		mc.animateTo(currentFocussedItem.getPoint());
