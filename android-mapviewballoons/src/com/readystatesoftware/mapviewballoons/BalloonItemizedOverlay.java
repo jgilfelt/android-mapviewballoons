@@ -45,8 +45,8 @@ public abstract class BalloonItemizedOverlay<Item extends OverlayItem> extends I
 	private View clickRegion;
 	private int viewOffset;
 	final MapController mc;
-	private Item currentFocussedItem;
-	private int currentFocussedIndex;
+	private Item currentFocusedItem;
+	private int currentFocusedIndex;
 	
 	/**
 	 * Create a new BalloonItemizedOverlay
@@ -104,13 +104,13 @@ public abstract class BalloonItemizedOverlay<Item extends OverlayItem> extends I
 	//protected final boolean onTap(int index) {
 	public final boolean onTap(int index) {
 		
-		currentFocussedIndex = index;
-		currentFocussedItem = createItem(index);
+		currentFocusedIndex = index;
+		currentFocusedItem = createItem(index);
 		
 		onBalloonOpen(index);
 		createAndDisplayBalloonOverlay();
 		
-		mc.animateTo(currentFocussedItem.getPoint());
+		mc.animateTo(currentFocusedItem.getPoint());
 		
 		return true;
 	}
@@ -134,7 +134,7 @@ public abstract class BalloonItemizedOverlay<Item extends OverlayItem> extends I
 	/**
 	 * Sets the visibility of this overlay's balloon view to GONE. 
 	 */
-	protected void hideBalloon() {
+	public void hideBalloon() {
 		if (balloonView != null) {
 			balloonView.setVisibility(View.GONE);
 		}
@@ -187,7 +187,7 @@ public abstract class BalloonItemizedOverlay<Item extends OverlayItem> extends I
 					if (Math.abs(startX - event.getX()) < 40 && 
 							Math.abs(startY - event.getY()) < 40 ) {
 						// call overridden method
-						onBalloonTap(currentFocussedIndex, currentFocussedItem);
+						onBalloonTap(currentFocusedIndex, currentFocusedItem);
 					}
 					return true;
 				} else {
@@ -203,7 +203,7 @@ public abstract class BalloonItemizedOverlay<Item extends OverlayItem> extends I
 	 */
 	@Override
 	public Item getFocus() {
-		return currentFocussedItem;
+		return currentFocusedItem;
 	}
 
 	/* (non-Javadoc)
@@ -211,9 +211,9 @@ public abstract class BalloonItemizedOverlay<Item extends OverlayItem> extends I
 	 */
 	@Override
 	public void setFocus(Item item) {
-		currentFocussedItem = item;
+		currentFocusedItem = item;
 		
-		if (currentFocussedItem == null){
+		if (currentFocusedItem == null){
 			hideBalloon();
 		}
 		else{
@@ -244,10 +244,10 @@ public abstract class BalloonItemizedOverlay<Item extends OverlayItem> extends I
 			hideOtherBalloons(mapOverlays);
 		}
 		
-		if (currentFocussedItem != null)
-			balloonView.setData(currentFocussedItem);
+		if (currentFocusedItem != null)
+			balloonView.setData(currentFocusedItem);
 		
-		GeoPoint point = currentFocussedItem.getPoint();
+		GeoPoint point = currentFocusedItem.getPoint();
 		MapView.LayoutParams params = new MapView.LayoutParams(
 				LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, point,
 				MapView.LayoutParams.BOTTOM_CENTER);

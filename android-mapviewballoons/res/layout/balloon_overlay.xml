@@ -3,7 +3,7 @@
 	android:layout_width="wrap_content" 
 	android:layout_height="wrap_content"
 	android:orientation="horizontal" 
-	android:paddingBottom="35dip"
+	android:paddingBottom="25dip"
 	android:paddingLeft="10dip" 
 	android:minWidth="200dip" 
 	android:id="@+id/balloon_main_layout"
@@ -16,7 +16,7 @@
 		android:layout_height="wrap_content"
 		android:orientation="vertical" 
 		android:layout_weight="1"
-		android:paddingTop="10dip" 
+		android:paddingTop="6dip" 
 		android:id="@id/balloon_inner_layout">
 		<TextView android:layout_height="wrap_content"
 			android:layout_width="wrap_content" 
