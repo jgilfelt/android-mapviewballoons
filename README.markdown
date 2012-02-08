@@ -3,9 +3,9 @@ Android MapView Balloons
 
 This project provides an easy way to annotate map overlay items with a simple information balloon when using the Android Maps external library (`com.google.android.maps`). It consists of `BalloonOverlayView`, a view representing the balloon that is displayed over your `MapView` and `BalloonItemizedOverlay`, an abstract extension of `ItemizedOverlay`.
 
-![Balloon](http://jeffgilfelt.com/mapviewballoons/balloon1.png "Balloon")&nbsp;
-![Balloon Pressed](http://jeffgilfelt.com/mapviewballoons/balloon2.png "Balloon Pressed")&nbsp;
-![Balloon2](http://jeffgilfelt.com/mapviewballoons/balloon4.png "Balloon")
+![Balloon](http://jeffgilfelt.com/mapviewballoons/balloon_holo1.png "Balloon")&nbsp;
+![Balloon Pressed](http://jeffgilfelt.com/mapviewballoons/balloon_holo2.png "Balloon Pressed")&nbsp;
+![Balloon2](http://jeffgilfelt.com/mapviewballoons/balloon_holo3.png "Balloon")
 
 Basic Usage
 -----------
@@ -19,7 +19,7 @@ The repository contains a working sample application project which fully demonst
 Custom Layouts
 --------------
 
-![custom](http://jeffgilfelt.com/mapviewballoons/balloon3.png "custom")
+![custom](http://jeffgilfelt.com/mapviewballoons/balloon_holo4.png "custom")
 
 You can create your own balloon look & feel and custom data mapping by creating a subclass of `BalloonOverlayView` with a generic type that extends `OverlayItem`. Override the `setupView(Context context, final ViewGroup parent)` method and inflate your own XML layout using `parent` as the root of its view hierachy.
 

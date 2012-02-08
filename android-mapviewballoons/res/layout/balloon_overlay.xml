@@ -38,7 +38,7 @@
 		android:id="@id/balloon_close" 
 		android:paddingLeft="10dip"
 		android:paddingBottom="10dip" 
-		android:paddingRight="8dip"
-		android:paddingTop="8dip"/>
+		android:paddingRight="5dip"
+		android:paddingTop="5dip"/>
 
 </LinearLayout>
