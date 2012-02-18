@@ -106,6 +106,7 @@ public abstract class BalloonItemizedOverlay<Item extends OverlayItem> extends I
 		
 		currentFocusedIndex = index;
 		currentFocusedItem = createItem(index);
+		setLastFocusedIndex(index);
 		
 		onBalloonOpen(index);
 		createAndDisplayBalloonOverlay();
