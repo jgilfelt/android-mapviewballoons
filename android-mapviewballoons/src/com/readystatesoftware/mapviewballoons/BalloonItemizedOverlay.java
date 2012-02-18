@@ -15,13 +15,12 @@
 
 package com.readystatesoftware.mapviewballoons;
 
-
-
 import java.util.List;
 
 import android.graphics.drawable.Drawable;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup.LayoutParams;
 
@@ -43,6 +42,7 @@ public abstract class BalloonItemizedOverlay<Item extends OverlayItem> extends I
 	private MapView mapView;
 	private BalloonOverlayView<Item> balloonView;
 	private View clickRegion;
+	private View closeRegion;
 	private int viewOffset;
 	final MapController mc;
 	private Item currentFocusedItem;
@@ -132,12 +132,13 @@ public abstract class BalloonItemizedOverlay<Item extends OverlayItem> extends I
 	}
 	
 	/**
-	 * Sets the visibility of this overlay's balloon view to GONE. 
+	 * Sets the visibility of this overlay's balloon view to GONE and unfocus the item. 
 	 */
 	public void hideBalloon() {
 		if (balloonView != null) {
 			balloonView.setVisibility(View.GONE);
 		}
+		currentFocusedItem = null;
 	}
 	
 	/**
@@ -231,6 +232,15 @@ public abstract class BalloonItemizedOverlay<Item extends OverlayItem> extends I
 			balloonView = createBalloonOverlayView();
 			clickRegion = (View) balloonView.findViewById(R.id.balloon_inner_layout);
 			clickRegion.setOnTouchListener(createBalloonTouchListener());
+			closeRegion = (View) balloonView.findViewById(R.id.balloon_close);
+			if (closeRegion != null) {
+				closeRegion.setOnClickListener(new OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						hideBalloon();	
+					}
+				});
+			}
 			isRecycled = false;
 		} else {
 			isRecycled = true;

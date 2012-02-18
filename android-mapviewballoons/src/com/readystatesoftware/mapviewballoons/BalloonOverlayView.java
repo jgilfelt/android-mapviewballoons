@@ -22,7 +22,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -80,13 +79,6 @@ public class BalloonOverlayView<Item extends OverlayItem> extends FrameLayout {
 		View v = inflater.inflate(R.layout.balloon_overlay, parent);
 		title = (TextView) v.findViewById(R.id.balloon_item_title);
 		snippet = (TextView) v.findViewById(R.id.balloon_item_snippet);
-
-		ImageView close = (ImageView) v.findViewById(R.id.balloon_close);
-		close.setOnClickListener(new OnClickListener() {
-			public void onClick(View v) {
-				parent.setVisibility(GONE);
-			}
-		});
 		
 	}
 	
