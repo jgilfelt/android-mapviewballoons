@@ -9,8 +9,10 @@
 	android:id="@+id/balloon_main_layout"
 	android:background="@drawable/balloon_overlay_bg_selector"
 	android:paddingTop="0dip"
-	android:paddingRight="0dip">
+	android:paddingRight="10dip"> 
 
+    <!-- your click region must be some sort of layout container using @id/balloon_inner_layout -->
+    
     <LinearLayout
         android:id="@id/balloon_inner_layout"
         android:layout_width="fill_parent"
@@ -51,13 +53,15 @@
 
     </LinearLayout>
 	
-	<ImageView android:layout_width="wrap_content"
-		android:layout_height="wrap_content" 
-		android:src="@drawable/balloon_overlay_close"
-		android:id="@id/balloon_close" 
-		android:paddingLeft="10dip"
-		android:paddingBottom="10dip" 
-		android:paddingRight="5dip"
-		android:paddingTop="5dip"/>
+	<!-- a close control is optional - it must use @id/balloon_close -->
+    
+<!-- 	<ImageView android:layout_width="wrap_content" -->
+<!-- 		android:layout_height="wrap_content"  -->
+<!-- 		android:src="@drawable/balloon_overlay_close" -->
+<!-- 		android:id="@id/balloon_close"  -->
+<!-- 		android:paddingLeft="10dip" -->
+<!-- 		android:paddingBottom="10dip"  -->
+<!-- 		android:paddingRight="5dip" -->
+<!-- 		android:paddingTop="5dip"/> -->
 
 </LinearLayout>
