@@ -105,14 +105,14 @@ public class BalloonOverlayView<Item extends OverlayItem> extends FrameLayout {
 			title.setText(item.getTitle());
 		} else {
 			title.setText("");
-			title.setVisibility(INVISIBLE);
+			title.setVisibility(GONE);
 		}
 		if (item.getSnippet() != null) {
 			snippet.setVisibility(VISIBLE);
 			snippet.setText(item.getSnippet());
 		} else {
 			snippet.setText("");
-			snippet.setVisibility(INVISIBLE);
+			snippet.setVisibility(GONE);
 		}
 	}
 	

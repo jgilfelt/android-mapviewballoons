@@ -68,13 +68,12 @@ public class MyMap extends MapActivity {
 		itemizedOverlay2 = new MyItemizedOverlay(drawable2, mapView);
 		
 		GeoPoint point3 = new GeoPoint((int)(51.513329*1E6),(int)(-0.08896*1E6));
-		OverlayItem overlayItem3 = new OverlayItem(point3, "Sliding Doors (1998)", 
-				"(interiors)");
+		OverlayItem overlayItem3 = new OverlayItem(point3, "Sliding Doors (1998)", null);
 		itemizedOverlay2.addOverlay(overlayItem3);
 		
 		GeoPoint point4 = new GeoPoint((int)(51.51738*1E6),(int)(-0.08186*1E6));
 		OverlayItem overlayItem4 = new OverlayItem(point4, "Mission: Impossible (1996)", 
-				"(Ethan & Jim cafe meeting)");		
+				"(Ethan & Jim cafe meeting)");
 		itemizedOverlay2.addOverlay(overlayItem4);
 		
 		mapOverlays.add(itemizedOverlay2);
