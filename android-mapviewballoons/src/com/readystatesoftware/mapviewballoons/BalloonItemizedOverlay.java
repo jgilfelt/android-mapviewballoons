@@ -211,12 +211,11 @@ public abstract class BalloonItemizedOverlay<Item extends OverlayItem> extends I
 	 */
 	@Override
 	public void setFocus(Item item) {
+		super.setFocus(item);		
 		currentFocusedItem = item;
-		
-		if (currentFocusedItem == null){
+		if (currentFocusedItem == null) {
 			hideBalloon();
-		}
-		else{
+		} else {
 			createAndDisplayBalloonOverlay();
 		}	
 	}
