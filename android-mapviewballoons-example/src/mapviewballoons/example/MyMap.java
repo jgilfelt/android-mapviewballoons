@@ -79,9 +79,26 @@ public class MyMap extends MapActivity {
 		
 		mapOverlays.add(itemizedOverlay2);
 		
-		final MapController mc = mapView.getController();
-		mc.animateTo(point2);
-		mc.setZoom(16);
+		if (savedInstanceState == null) {
+			
+			final MapController mc = mapView.getController();
+			mc.animateTo(point2);
+			mc.setZoom(16);
+			
+		} else {
+			
+			// example restoring focused state of overlays
+			int focused;
+			focused = savedInstanceState.getInt("focused_1", -1);
+			if (focused >= 0) {
+				itemizedOverlay.setFocus(itemizedOverlay.getItem(focused));
+			}
+			focused = savedInstanceState.getInt("focused_2", -1);
+			if (focused >= 0) {
+				itemizedOverlay2.setFocus(itemizedOverlay2.getItem(focused));
+			}
+			
+		}
 		
     }
 	
@@ -90,4 +107,14 @@ public class MyMap extends MapActivity {
 		return false;
 	}
 
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		
+		// example saving focused state of overlays
+		if (itemizedOverlay.getFocus() != null) outState.putInt("focused_1", itemizedOverlay.getLastFocusedIndex());
+		if (itemizedOverlay2.getFocus() != null) outState.putInt("focused_2", itemizedOverlay2.getLastFocusedIndex());
+		super.onSaveInstanceState(outState);
+	
+	}
+	
 }
