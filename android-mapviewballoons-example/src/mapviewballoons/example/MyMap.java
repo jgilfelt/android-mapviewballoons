@@ -19,6 +19,8 @@ import java.util.List;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapActivity;
@@ -115,5 +117,28 @@ public class MyMap extends MapActivity {
 		super.onSaveInstanceState(outState);
 	
 	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		menu.add(0, 0, 1, "Remove Overlay");
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		if (item.getItemId() == 0) {
+			
+			// example hiding balloon before removing overlay
+			if (itemizedOverlay.getFocus() != null) {
+				itemizedOverlay.hideBalloon();
+			}
+			mapOverlays.remove(itemizedOverlay);
+			mapView.invalidate();
+			
+		}
+		return true;
+	}
+	
+	
 	
 }
