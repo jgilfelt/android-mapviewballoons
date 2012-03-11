@@ -18,6 +18,7 @@ package com.readystatesoftware.mapviewballoons;
 import java.util.List;
 
 import android.graphics.drawable.Drawable;
+import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -39,6 +40,9 @@ import com.google.android.maps.OverlayItem;
  */
 public abstract class BalloonItemizedOverlay<Item extends OverlayItem> extends ItemizedOverlay<Item> {
 
+	private static final long BALLOON_INFLATION_TIME = 300;
+	private static Handler handler = new Handler();
+	
 	private MapView mapView;
 	private BalloonOverlayView<Item> balloonView;
 	private View clickRegion;
@@ -47,6 +51,12 @@ public abstract class BalloonItemizedOverlay<Item extends OverlayItem> extends I
 	final MapController mc;
 	private Item currentFocusedItem;
 	private int currentFocusedIndex;
+	
+	private boolean showClose = true;
+	private boolean showDisclosure = false;
+	private boolean snapToCenter = true;
+	
+	private static boolean isInflating = false;
 	
 	/**
 	 * Create a new BalloonItemizedOverlay
@@ -104,6 +114,10 @@ public abstract class BalloonItemizedOverlay<Item extends OverlayItem> extends I
 	//protected final boolean onTap(int index) {
 	public final boolean onTap(int index) {
 		
+		handler.removeCallbacks(finishBalloonInflation);
+		isInflating = true;
+		handler.postDelayed(finishBalloonInflation, BALLOON_INFLATION_TIME);
+		
 		currentFocusedIndex = index;
 		currentFocusedItem = createItem(index);
 		setLastFocusedIndex(index);
@@ -111,7 +125,9 @@ public abstract class BalloonItemizedOverlay<Item extends OverlayItem> extends I
 		onBalloonOpen(index);
 		createAndDisplayBalloonOverlay();
 		
-		mc.animateTo(currentFocusedItem.getPoint());
+		if (snapToCenter) {
+			mc.animateTo(currentFocusedItem.getPoint());
+		}
 		
 		return true;
 	}
@@ -156,6 +172,16 @@ public abstract class BalloonItemizedOverlay<Item extends OverlayItem> extends I
 			}
 		}
 		
+	}
+	
+	public void hideAllBalloons() {
+		if (!isInflating) {
+			List<Overlay> mapOverlays = mapView.getOverlays();
+			if (mapOverlays.size() > 1) {
+				hideOtherBalloons(mapOverlays);
+			}
+			hideBalloon();
+		}
 	}
 	
 	/**
@@ -236,12 +262,22 @@ public abstract class BalloonItemizedOverlay<Item extends OverlayItem> extends I
 			clickRegion.setOnTouchListener(createBalloonTouchListener());
 			closeRegion = (View) balloonView.findViewById(R.id.balloon_close);
 			if (closeRegion != null) {
-				closeRegion.setOnClickListener(new OnClickListener() {
-					@Override
-					public void onClick(View v) {
-						hideBalloon();	
-					}
-				});
+				if (!showClose) {
+					closeRegion.setVisibility(View.GONE);
+				} else {
+					closeRegion.setOnClickListener(new OnClickListener() {
+						@Override
+						public void onClick(View v) {
+							hideBalloon();	
+						}
+					});
+				}
+			}
+			if (showDisclosure && !showClose) {
+				View v = balloonView.findViewById(R.id.balloon_disclosure);
+				if (v != null) {
+					v.setVisibility(View.VISIBLE);
+				}
 			}
 			isRecycled = false;
 		} else {
@@ -274,5 +310,27 @@ public abstract class BalloonItemizedOverlay<Item extends OverlayItem> extends I
 		
 		return isRecycled;
 	}
+	
+	public void setShowClose(boolean showClose) {
+		this.showClose = showClose;
+	}
+
+	public void setShowDisclosure(boolean showDisclosure) {
+		this.showDisclosure = showDisclosure;
+	}
+
+	public void setSnapToCenter(boolean snapToCenter) {
+		this.snapToCenter = snapToCenter;
+	}
+
+	public static boolean isInflating() {
+		return isInflating;
+	}
+	
+	private static Runnable finishBalloonInflation = new Runnable() {
+		public void run() {
+			isInflating = false;
+		}
+	};
 	
 }
