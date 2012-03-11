@@ -2,6 +2,7 @@ package mapviewballoons;
 
 import mapviewballoons.example.MyMap;
 import mapviewballoons.example.custom.CustomMap;
+import mapviewballoons.example.tapcontrolled.TapControlledMap;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,7 +22,7 @@ public class Main extends ListActivity implements OnItemClickListener {
         getListView().setOnItemClickListener(this);
     }
 
-    private String[] mStrings = {"Simple", "Custom"};
+    private String[] mStrings = {"1. Simple", "2. Custom", "3. Tap close / Doubletap zoom"};
 
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -33,6 +34,10 @@ public class Main extends ListActivity implements OnItemClickListener {
 			break;
 		case 1:
 			intent = new Intent(this, CustomMap.class);
+			startActivity(intent);
+			break;
+		case 2:
+			intent = new Intent(this, TapControlledMap.class);
 			startActivity(intent);
 			break;
 		default:
