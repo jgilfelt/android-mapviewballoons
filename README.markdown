@@ -5,7 +5,7 @@ This project provides an easy way to annotate map overlay items with a simple in
 
 ![Balloon](http://jeffgilfelt.com/mapviewballoons/balloon_holo1.png "Balloon")&nbsp;
 ![Balloon Pressed](http://jeffgilfelt.com/mapviewballoons/balloon_holo2.png "Balloon Pressed")&nbsp;
-![Balloon2](http://jeffgilfelt.com/mapviewballoons/balloon_holo3.png "Balloon")
+![Balloon2](http://jeffgilfelt.com/mapviewballoons/balloon_disclosure.png "Balloon Disclose")
 
 Basic Usage
 -----------
@@ -58,4 +58,4 @@ Author: Jeff Gilfelt
 
 The code in this project is licensed under the Apache Software License 2.0.
 <br />
-Copyright (c) 2011 readyState Software Ltd.
+Copyright (c) 2012 readyState Software Ltd.
