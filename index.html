@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Android MapView Balloons by jgilfelt</title>
+    
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Android MapView Balloons</h1>
+        <p>Simple information balloon annotation for Android MapView</p>
+        <p class="view"><a href="https://github.com/jgilfelt/android-mapviewballoons">View the Project on GitHub <small>jgilfelt/android-mapviewballoons</small></a></p>
+        <ul>
+          <li><a href="https://github.com/jgilfelt/android-mapviewballoons/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/jgilfelt/android-mapviewballoons/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/jgilfelt/android-mapviewballoons">Fork On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <p>This project provides an easy way to annotate map overlay items with a simple information balloon when using the Android Maps external library (<code>com.google.android.maps</code>).</p>
+
+<p><img src="http://jeffgilfelt.com/mapviewballoons/balloon_holo1.png" alt="Balloon" title="Balloon">
+ 
+<img src="http://jeffgilfelt.com/mapviewballoons/balloon_disclosure.png" alt="Balloon2" title="Balloon Disclose"></p>
+
+<h2>Basic Usage</h2>
+
+<p>Create a subclass of <code>BalloonItemizedOverlay</code> in the same way you would do for the base <code>ItemizedOverlay</code> class. Rather than overriding <code>onTap()</code> (which is already implemented to invoke the balloon view display for each item tap), you override <code>onBalloonTap()</code> to handle a screen tap event on the balloon itself.</p>
+
+<p>The data displayed in each balloon is mapped to the title and snippet arguments you provide to the constructor of each <code>OverlayItem</code>.</p>
+
+<p>The repository contains a working sample application project which fully demonstrates its usage.</p>
+
+<h2>Credits</h2>
+
+<p>Author: <a href="http://jeffgilfelt.com">Jeff Gilfelt</a></p>
+
+<p>The code in this project is licensed under the Apache Software License 2.0.</p>
+
+<p>Copyright (c) 2012 readyState Software Ltd.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/jgilfelt">jgilfelt</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
+  </body>
+</html>
