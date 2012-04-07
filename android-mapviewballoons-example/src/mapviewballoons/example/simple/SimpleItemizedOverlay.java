@@ -13,7 +13,7 @@
  * 
  */
 
-package mapviewballoons.example;
+package mapviewballoons.example.simple;
 
 import java.util.ArrayList;
 
@@ -26,12 +26,12 @@ import com.google.android.maps.OverlayItem;
 
 import com.readystatesoftware.mapviewballoons.BalloonItemizedOverlay;
 
-public class MyItemizedOverlay extends BalloonItemizedOverlay<OverlayItem> {
+public class SimpleItemizedOverlay extends BalloonItemizedOverlay<OverlayItem> {
 
 	private ArrayList<OverlayItem> m_overlays = new ArrayList<OverlayItem>();
 	private Context c;
 	
-	public MyItemizedOverlay(Drawable defaultMarker, MapView mapView) {
+	public SimpleItemizedOverlay(Drawable defaultMarker, MapView mapView) {
 		super(boundCenter(defaultMarker), mapView);
 		c = mapView.getContext();
 	}

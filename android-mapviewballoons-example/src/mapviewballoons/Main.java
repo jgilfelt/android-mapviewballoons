@@ -1,6 +1,6 @@
 package mapviewballoons;
 
-import mapviewballoons.example.MyMap;
+import mapviewballoons.example.simple.SimpleMap;
 import mapviewballoons.example.custom.CustomMap;
 import mapviewballoons.example.tapcontrolled.TapControlledMap;
 import android.app.ListActivity;
@@ -29,7 +29,7 @@ public class Main extends ListActivity implements OnItemClickListener {
 		Intent intent = null;
 		switch (position) {
 		case 0:
-			intent = new Intent(this, MyMap.class);
+			intent = new Intent(this, SimpleMap.class);
 			startActivity(intent);
 			break;
 		case 1:
