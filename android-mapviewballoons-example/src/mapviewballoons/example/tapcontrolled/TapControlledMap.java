@@ -17,7 +17,7 @@ package mapviewballoons.example.tapcontrolled;
 
 import java.util.List;
 
-import mapviewballoons.example.MyItemizedOverlay;
+import mapviewballoons.example.simple.SimpleItemizedOverlay;
 import mapviewballoons.example.R;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -37,8 +37,8 @@ public class TapControlledMap extends MapActivity {
 	List<Overlay> mapOverlays;
 	Drawable drawable;
 	Drawable drawable2;
-	MyItemizedOverlay itemizedOverlay;
-	MyItemizedOverlay itemizedOverlay2;
+	SimpleItemizedOverlay itemizedOverlay;
+	SimpleItemizedOverlay itemizedOverlay2;
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
@@ -62,7 +62,7 @@ public class TapControlledMap extends MapActivity {
 		
 		// first overlay
 		drawable = getResources().getDrawable(R.drawable.marker);
-		itemizedOverlay = new MyItemizedOverlay(drawable, mapView);
+		itemizedOverlay = new SimpleItemizedOverlay(drawable, mapView);
 		// set iOS behavior attributes for overlay
 		itemizedOverlay.setShowClose(false);
 		itemizedOverlay.setShowDisclosure(true);
@@ -82,7 +82,7 @@ public class TapControlledMap extends MapActivity {
 		
 		// second overlay
 		drawable2 = getResources().getDrawable(R.drawable.marker2);
-		itemizedOverlay2 = new MyItemizedOverlay(drawable2, mapView);
+		itemizedOverlay2 = new SimpleItemizedOverlay(drawable2, mapView);
 		// set iOS behavior attributes for overlay
 		itemizedOverlay2.setShowClose(false);
 		itemizedOverlay2.setShowDisclosure(true);

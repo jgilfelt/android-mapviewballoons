@@ -13,9 +13,11 @@
  * 
  */
 
-package mapviewballoons.example;
+package mapviewballoons.example.simple;
 
 import java.util.List;
+
+import mapviewballoons.example.R;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -29,14 +31,14 @@ import com.google.android.maps.MapView;
 import com.google.android.maps.Overlay;
 import com.google.android.maps.OverlayItem;
 
-public class MyMap extends MapActivity {
+public class SimpleMap extends MapActivity {
 
 	MapView mapView;
 	List<Overlay> mapOverlays;
 	Drawable drawable;
 	Drawable drawable2;
-	MyItemizedOverlay itemizedOverlay;
-	MyItemizedOverlay itemizedOverlay2;
+	SimpleItemizedOverlay itemizedOverlay;
+	SimpleItemizedOverlay itemizedOverlay2;
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
@@ -51,7 +53,7 @@ public class MyMap extends MapActivity {
 		
 		// first overlay
 		drawable = getResources().getDrawable(R.drawable.marker);
-		itemizedOverlay = new MyItemizedOverlay(drawable, mapView);
+		itemizedOverlay = new SimpleItemizedOverlay(drawable, mapView);
 		
 		GeoPoint point = new GeoPoint((int)(51.5174723*1E6),(int)(-0.0899537*1E6));
 		OverlayItem overlayItem = new OverlayItem(point, "Tomorrow Never Dies (1997)", 
@@ -67,7 +69,7 @@ public class MyMap extends MapActivity {
 		
 		// second overlay
 		drawable2 = getResources().getDrawable(R.drawable.marker2);
-		itemizedOverlay2 = new MyItemizedOverlay(drawable2, mapView);
+		itemizedOverlay2 = new SimpleItemizedOverlay(drawable2, mapView);
 		
 		GeoPoint point3 = new GeoPoint((int)(51.513329*1E6),(int)(-0.08896*1E6));
 		OverlayItem overlayItem3 = new OverlayItem(point3, "Sliding Doors (1998)", null);
