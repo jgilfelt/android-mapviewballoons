@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="balloon_overlay_close_popup">close popup</string>
+    <string name="balloon_overlay_go_next">go next</string>
+</resources>

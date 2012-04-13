@@ -24,6 +24,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.ItemizedOverlay;
@@ -45,7 +47,6 @@ public abstract class BalloonItemizedOverlay<Item extends OverlayItem> extends I
 	
 	private MapView mapView;
 	private BalloonOverlayView<Item> balloonView;
-	private View clickRegion;
 	private View closeRegion;
 	private int viewOffset;
 	final MapController mc;
@@ -258,8 +259,10 @@ public abstract class BalloonItemizedOverlay<Item extends OverlayItem> extends I
 		boolean isRecycled;
 		if (balloonView == null) {
 			balloonView = createBalloonOverlayView();
-			clickRegion = (View) balloonView.findViewById(R.id.balloon_inner_layout);
-			clickRegion.setOnTouchListener(createBalloonTouchListener());
+			OnTouchListener onTouchListener = createBalloonTouchListener();
+			balloonView.setOnTouchListener(onTouchListener);
+			ImageView disclosureImageView = (ImageView) balloonView.findViewById(
+					R.id.balloon_disclosure);
 			closeRegion = (View) balloonView.findViewById(R.id.balloon_close);
 			if (closeRegion != null) {
 				if (!showClose) {
@@ -274,9 +277,8 @@ public abstract class BalloonItemizedOverlay<Item extends OverlayItem> extends I
 				}
 			}
 			if (showDisclosure && !showClose) {
-				View v = balloonView.findViewById(R.id.balloon_disclosure);
-				if (v != null) {
-					v.setVisibility(View.VISIBLE);
+				if (disclosureImageView != null) {
+					disclosureImageView.setVisibility(View.VISIBLE);
 				}
 			}
 			isRecycled = false;
