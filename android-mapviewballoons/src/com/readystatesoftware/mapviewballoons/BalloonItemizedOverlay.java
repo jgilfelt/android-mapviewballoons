@@ -25,7 +25,6 @@ import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.ItemizedOverlay;
@@ -40,7 +39,7 @@ import com.google.android.maps.OverlayItem;
  * 
  * @author Jeff Gilfelt
  */
-public abstract class BalloonItemizedOverlay<Item extends OverlayItem> extends ItemizedOverlay<Item> {
+public abstract class BalloonItemizedOverlay<Item extends OverlayItem> extends ItemizedOverlay<Item> implements OnTouchListener {
 
 	private static final long BALLOON_INFLATION_TIME = 300;
 	private static Handler handler = new Handler();
@@ -59,6 +58,9 @@ public abstract class BalloonItemizedOverlay<Item extends OverlayItem> extends I
 	
 	private static boolean isInflating = false;
 	
+	private float startX;
+	private float startY;
+
 	/**
 	 * Create a new BalloonItemizedOverlay
 	 * 
@@ -185,46 +187,35 @@ public abstract class BalloonItemizedOverlay<Item extends OverlayItem> extends I
 		}
 	}
 	
-	/**
-	 * Sets the onTouchListener for the balloon being displayed, calling the
-	 * overridden {@link #onBalloonTap} method.
-	 */
-	private OnTouchListener createBalloonTouchListener() {
-		return new OnTouchListener() {
-			
-			float startX;
-			float startY;
-			
-			public boolean onTouch(View v, MotionEvent event) {
-				
-				View l =  ((View) v.getParent()).findViewById(R.id.balloon_main_layout);
-				Drawable d = l.getBackground();
-				
-				if (event.getAction() == MotionEvent.ACTION_DOWN) {
-					int[] states = {android.R.attr.state_pressed};
-					if (d.setState(states)) {
-						d.invalidateSelf();
-					}
-					startX = event.getX();
-					startY = event.getY();
-					return true;
-				} else if (event.getAction() == MotionEvent.ACTION_UP) {
-					int newStates[] = {};
-					if (d.setState(newStates)) {
-						d.invalidateSelf();
-					}
-					if (Math.abs(startX - event.getX()) < 40 && 
-							Math.abs(startY - event.getY()) < 40 ) {
-						// call overridden method
-						onBalloonTap(currentFocusedIndex, currentFocusedItem);
-					}
-					return true;
-				} else {
-					return false;
-				}
-				
+	@Override
+	public boolean onTouch(View v, MotionEvent event) {
+		
+		View l =  ((View) v.getParent()).findViewById(R.id.balloon_main_layout);
+		Drawable d = l.getBackground();
+		
+		if (event.getAction() == MotionEvent.ACTION_DOWN) {
+			int[] states = {android.R.attr.state_pressed};
+			if (d.setState(states)) {
+				d.invalidateSelf();
 			}
-		};
+			startX = event.getX();
+			startY = event.getY();
+			return true;
+		} else if (event.getAction() == MotionEvent.ACTION_UP) {
+			int newStates[] = {};
+			if (d.setState(newStates)) {
+				d.invalidateSelf();
+			}
+			if (Math.abs(startX - event.getX()) < 40 && 
+					Math.abs(startY - event.getY()) < 40 ) {
+				// call overridden method
+				onBalloonTap(currentFocusedIndex, currentFocusedItem);
+			}
+			return true;
+		} else {
+			return false;
+		}
+		
 	}
 	
 	/* (non-Javadoc)
@@ -259,8 +250,7 @@ public abstract class BalloonItemizedOverlay<Item extends OverlayItem> extends I
 		boolean isRecycled;
 		if (balloonView == null) {
 			balloonView = createBalloonOverlayView();
-			OnTouchListener onTouchListener = createBalloonTouchListener();
-			balloonView.setOnTouchListener(onTouchListener);
+			balloonView.setOnTouchListener(this);
 			ImageView disclosureImageView = (ImageView) balloonView.findViewById(
 					R.id.balloon_disclosure);
 			closeRegion = (View) balloonView.findViewById(R.id.balloon_close);
