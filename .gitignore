@@ -2,6 +2,17 @@
 android-mapviewballoons/local.properties
 android-mapviewballoons/bin/
 android-mapviewballoons/gen/
+android-mapviewballoons/tmp/
+android-mapviewballoons/proguard/
+android-mapviewballoons/.classpath
+android-mapviewballoons/.project
+android-mapviewballoons/.settings/
+
 android-mapviewballoons-example/local.properties
 android-mapviewballoons-example/bin/
 android-mapviewballoons-example/gen/
+android-mapviewballoons-example/tmp/
+android-mapviewballoons-example/proguard/
+android-mapviewballoons-example/.classpath
+android-mapviewballoons-example/.project
+android-mapviewballoons-example/.settings/
