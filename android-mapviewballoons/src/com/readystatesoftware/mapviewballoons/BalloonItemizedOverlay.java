@@ -126,10 +126,21 @@ public abstract class BalloonItemizedOverlay<Item extends OverlayItem> extends I
 		createAndDisplayBalloonOverlay();
 		
 		if (snapToCenter) {
-			mc.animateTo(currentFocusedItem.getPoint());
+			animateTo(index, currentFocusedItem.getPoint());
 		}
 		
 		return true;
+	}
+
+	/**
+	 * Animates to the given center point. Override to customize how the
+	 * MapView is animated to the given center point
+	 *
+	 * @param index The index of the item to center
+	 * @param center The center point of the item
+	 */
+	protected void animateTo(int index, GeoPoint center) {
+		mc.animateTo(center);
 	}
 
 	/**
