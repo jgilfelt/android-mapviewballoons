@@ -220,17 +220,21 @@ public abstract class BalloonItemizedOverlay<Item extends OverlayItem> extends I
 				Drawable d = l.getBackground();
 				
 				if (event.getAction() == MotionEvent.ACTION_DOWN) {
-					int[] states = {android.R.attr.state_pressed};
-					if (d.setState(states)) {
-						d.invalidateSelf();
+					if (d != null) {
+						int[] states = {android.R.attr.state_pressed};
+						if (d.setState(states)) {
+							d.invalidateSelf();
+						}
 					}
 					startX = event.getX();
 					startY = event.getY();
 					return true;
 				} else if (event.getAction() == MotionEvent.ACTION_UP) {
-					int newStates[] = {};
-					if (d.setState(newStates)) {
-						d.invalidateSelf();
+					if (d != null) {
+						int newStates[] = {};
+						if (d.setState(newStates)) {
+							d.invalidateSelf();
+						}
 					}
 					if (Math.abs(startX - event.getX()) < 40 && 
 							Math.abs(startY - event.getY()) < 40 ) {
