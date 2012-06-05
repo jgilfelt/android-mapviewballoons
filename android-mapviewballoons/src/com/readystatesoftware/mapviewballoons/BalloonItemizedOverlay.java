@@ -158,7 +158,16 @@ public abstract class BalloonItemizedOverlay<Item extends OverlayItem> extends I
 	protected MapView getMapView() {
 		return mapView;
 	}
-	
+
+	/**
+	 * Makes the balloon the topmost item by calling View.bringToFront().
+	 */
+	public void bringBalloonToFront() {
+		if (balloonView != null) {
+			balloonView.bringToFront();
+		}
+	}
+
 	/**
 	 * Sets the visibility of this overlay's balloon view to GONE and unfocus the item. 
 	 */
