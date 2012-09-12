@@ -1,4 +1,4 @@
-package com.readystatesoftware.azimuth.internal;
+package com.amazon.geo.maps;
 
 import android.graphics.Canvas;
 import android.graphics.Point;
@@ -10,18 +10,20 @@ import com.readystatesoftware.azimuth.interfaces.IGeoPoint;
 import com.readystatesoftware.azimuth.interfaces.IItemizedOverlay;
 import com.readystatesoftware.azimuth.interfaces.IMapView;
 import com.readystatesoftware.azimuth.interfaces.IOverlayItem;
+import com.readystatesoftware.azimuth.internal.GeoPointAmazon;
+import com.readystatesoftware.azimuth.internal.OverlayItemAmazon;
 
-public abstract class ItemizedOverlayGoogle implements IItemizedOverlay {
+public abstract class _ItemizedOverlay implements IItemizedOverlay {
 
-	private final com.google.android.maps.ItemizedOverlay<com.google.android.maps.OverlayItem> mItemizedOverlay;
+	private final com.amazon.geo.maps.ItemizedOverlay<com.amazon.geo.maps.OverlayItem> mItemizedOverlay;
 	
-	public ItemizedOverlayGoogle(final com.google.android.maps.ItemizedOverlay<com.google.android.maps.OverlayItem> pItemizedOverlay) {
+	public _ItemizedOverlay(final com.amazon.geo.maps.ItemizedOverlay<com.amazon.geo.maps.OverlayItem> pItemizedOverlay) {
 		mItemizedOverlay = pItemizedOverlay;
 	}
 	
 	@Override
 	public void populate() {
-//		mItemizedOverlay
+		mItemizedOverlay.populate();
 	}
 
 	@Override
@@ -34,18 +36,18 @@ public abstract class ItemizedOverlayGoogle implements IItemizedOverlay {
 
 	@Override
 	public IOverlayItem getItem(int arg0) {
-		return new OverlayItemGoogle(mItemizedOverlay.getItem(arg0));
+		return new OverlayItemAmazon(mItemizedOverlay.getItem(arg0));
 	}
 
 	@Override
 	public IGeoPoint getCenter() {
-		return new GeoPointGoogle(mItemizedOverlay.getCenter());
+		return new GeoPointAmazon(mItemizedOverlay.getCenter());
 	}
 
 	@Override
 	public void setFocus(IOverlayItem arg0) {
-		mItemizedOverlay.setFocus(new com.google.android.maps.OverlayItem(
-				new com.google.android.maps.GeoPoint(arg0.getPoint().getLatitudeE6(), arg0.getPoint().getLongitudeE6()),
+		mItemizedOverlay.setFocus(new com.amazon.geo.maps.OverlayItem(
+				new com.amazon.geo.maps.GeoPoint(arg0.getPoint().getLatitudeE6(), arg0.getPoint().getLongitudeE6()),
 				arg0.getTitle(), arg0.getSnippet()));
 	}
 
