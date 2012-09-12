@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:amazon="http://schemas.amazon.com/apk/res/android"
     package="mapviewballoons.example"
     android:versionCode="1"
     android:versionName="1.0" >
@@ -26,7 +27,15 @@
             android:label="@string/app_name"
             android:name=".tapcontrolled.TapControlledMap"/>
 
-        <uses-library android:name="com.google.android.maps" />
+		<!-- <uses-library android:name="com.google.android.maps" /> -->
+		
+		<!-- Enable Amazon Maps on Amazon devices. -->
+    	<amazon:enable-feature android:name="com.amazon.geo.maps" android:required="false" />
+  
+		<!-- Make Google Maps library optional. -->
+		<uses-library android:name="com.google.android.maps" android:required="false" />
+		
+		
     </application>
 
     <uses-sdk

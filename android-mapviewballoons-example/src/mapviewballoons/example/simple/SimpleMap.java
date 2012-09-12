@@ -24,12 +24,18 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.google.android.maps.GeoPoint;
-import com.google.android.maps.MapActivity;
-import com.google.android.maps.MapController;
-import com.google.android.maps.MapView;
-import com.google.android.maps.Overlay;
-import com.google.android.maps.OverlayItem;
+//import com.google.android.maps.GeoPoint;
+//import com.google.android.maps.MapActivity;
+//import com.google.android.maps.MapController;
+//import com.google.android.maps.MapView;
+//import com.google.android.maps.Overlay;
+//import com.google.android.maps.OverlayItem;
+import com.amazon.geo.maps.GeoPoint;
+import com.amazon.geo.maps.MapActivity;
+import com.amazon.geo.maps.MapController;
+import com.amazon.geo.maps.MapView;
+import com.amazon.geo.maps.Overlay;
+import com.amazon.geo.maps.OverlayItem;
 
 public class SimpleMap extends MapActivity {
 

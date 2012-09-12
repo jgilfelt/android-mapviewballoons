@@ -23,11 +23,17 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.MotionEvent;
 
-import com.google.android.maps.GeoPoint;
-import com.google.android.maps.MapActivity;
-import com.google.android.maps.MapController;
-import com.google.android.maps.Overlay;
-import com.google.android.maps.OverlayItem;
+//import com.google.android.maps.GeoPoint;
+//import com.google.android.maps.MapActivity;
+//import com.google.android.maps.MapController;
+//import com.google.android.maps.Overlay;
+//import com.google.android.maps.OverlayItem;
+import com.amazon.geo.maps.GeoPoint;
+import com.amazon.geo.maps.MapActivity;
+import com.amazon.geo.maps.MapController;
+import com.amazon.geo.maps.Overlay;
+import com.amazon.geo.maps.OverlayItem;
+
 import com.readystatesoftware.maps.OnSingleTapListener;
 import com.readystatesoftware.maps.TapControlledMapView;
 

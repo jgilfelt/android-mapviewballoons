@@ -4,5 +4,6 @@
 	<classpathentry kind="src" path="gen"/>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
+	<classpathentry kind="lib" path="/Users/jgilfelt/android-sdk-mac/add-ons/AmazonMapsAddon/libs/amazonmaps.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
