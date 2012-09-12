@@ -25,7 +25,8 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.google.android.maps.OverlayItem;
+//import com.google.android.maps.OverlayItem;
+import com.amazon.geo.maps.OverlayItem;
 
 /**
  * A view representing a MapView marker information balloon.
