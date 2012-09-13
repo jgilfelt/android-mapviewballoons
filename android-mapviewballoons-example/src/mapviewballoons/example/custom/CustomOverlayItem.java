@@ -15,8 +15,8 @@
 
 package mapviewballoons.example.custom;
 
-//import com.google.android.maps.GeoPoint;
-//import com.google.android.maps.OverlayItem;
+//import com.amazon.geo.maps.GeoPoint;
+//import com.amazon.geo.maps.OverlayItem;
 import com.amazon.geo.maps.GeoPoint;
 import com.amazon.geo.maps.OverlayItem;
 

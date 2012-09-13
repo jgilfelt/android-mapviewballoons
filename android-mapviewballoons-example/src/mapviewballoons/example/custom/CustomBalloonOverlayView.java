@@ -30,7 +30,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-//import com.google.android.maps.OverlayItem;
+//import com.amazon.geo.maps.OverlayItem;
 import com.amazon.geo.maps.OverlayItem;
 
 import com.readystatesoftware.mapviewballoons.BalloonOverlayView;
