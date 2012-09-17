@@ -21,8 +21,6 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.widget.Toast;
 
-//import com.amazon.geo.maps.MapView;
-//import com.amazon.geo.maps.OverlayItem;
 import com.amazon.geo.maps.MapView;
 import com.amazon.geo.maps.OverlayItem;
 

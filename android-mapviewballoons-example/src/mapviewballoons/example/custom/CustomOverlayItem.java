@@ -15,8 +15,6 @@
 
 package mapviewballoons.example.custom;
 
-//import com.amazon.geo.maps.GeoPoint;
-//import com.amazon.geo.maps.OverlayItem;
 import com.amazon.geo.maps.GeoPoint;
 import com.amazon.geo.maps.OverlayItem;
 

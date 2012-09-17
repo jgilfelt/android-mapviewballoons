@@ -25,7 +25,6 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-//import com.amazon.geo.maps.OverlayItem;
 import com.amazon.geo.maps.OverlayItem;
 
 /**

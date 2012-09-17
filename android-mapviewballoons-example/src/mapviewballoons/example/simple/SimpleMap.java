@@ -24,12 +24,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-//import com.amazon.geo.maps.GeoPoint;
-//import com.amazon.geo.maps.MapActivity;
-//import com.amazon.geo.maps.MapController;
-//import com.amazon.geo.maps.MapView;
-//import com.amazon.geo.maps.Overlay;
-//import com.amazon.geo.maps.OverlayItem;
 import com.amazon.geo.maps.GeoPoint;
 import com.amazon.geo.maps.MapActivity;
 import com.amazon.geo.maps.MapController;

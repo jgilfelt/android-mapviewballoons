@@ -25,12 +25,6 @@ import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup.LayoutParams;
 
-//import com.amazon.geo.maps.GeoPoint;
-//import com.amazon.geo.maps.ItemizedOverlay;
-//import com.amazon.geo.maps.MapController;
-//import com.amazon.geo.maps.MapView;
-//import com.amazon.geo.maps.Overlay;
-//import com.amazon.geo.maps.OverlayItem;
 import com.amazon.geo.maps.GeoPoint;
 import com.amazon.geo.maps.ItemizedOverlay;
 import com.amazon.geo.maps.MapController;

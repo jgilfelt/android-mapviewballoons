@@ -7,7 +7,6 @@ import android.view.GestureDetector.OnDoubleTapListener;
 import android.view.GestureDetector.OnGestureListener;
 import android.view.MotionEvent;
 
-//import com.amazon.geo.maps.MapView;
 import com.amazon.geo.maps.MapView;
 
 public class TapControlledMapView extends MapView implements OnGestureListener {
