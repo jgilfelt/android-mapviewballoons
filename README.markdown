@@ -34,6 +34,15 @@ This library also includes `TapControlledMapView` - an optional custom `MapView`
 
 Refer to the example Activity included in the sample application project.
 
+Amazon Maps API & Kindle Fire
+-----------------------------
+
+![kindle](http://jeffgilfelt.com/mapviewballoons/kindle.png "kindle")
+
+This library supports the alternative Amazon Maps API found on devices such as the 2nd generation Kindle Fire and Kindle Fire HD.
+
+To enable Amazon Maps API support you should follow the Google Maps API migration instructions found at [developer.amazon.com](http://developer.amazon.com). Switch to the `amazon-maps-api-support` branch in this repository for an example. The library must be modified to use the `com.amazon.geo.maps` imports. You can use the [mapimports.sh](https://gist.github.com/3715056) script to toggle between Google and Amazon APIs. This project does not currently provide a way to support both APIs in a single build.
+
 Implementation
 --------------
 
@@ -45,12 +54,6 @@ To install the library and sample project in Eclipse:
 - Select the root folder where you cloned/downloaded the repository to import both projects.
 - Use **Project - Clean** if there are any errors.
 
-Whats Missing?
---------------
-
-* Long press support
-* Trackball/cursor support
-
 Credits
 -------
 
@@ -58,4 +61,4 @@ Author: Jeff Gilfelt
 
 The code in this project is licensed under the Apache Software License 2.0.
 <br />
-Copyright (c) 2012 readyState Software Ltd.
+Copyright &copy; 2012 readyState Software Ltd.
