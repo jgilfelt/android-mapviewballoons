@@ -101,11 +101,29 @@ public abstract class BalloonItemizedOverlay<Item extends OverlayItem> extends I
 	
 	/**
 	 * Override this method to perform actions upon an item being tapped before 
-	 * its balloon is displayed.
+	 * its balloon is displayed. By default, does nothing 
+	 * and returns false.
 	 * 
-	 * @param index - The index of the item tapped.
+	 * @param index - The index of the item whose balloon is tapped.
+	 * @param item - The item whose balloon is tapped.
+	 * @return true if you handled the tap, otherwise false.
 	 */
-	protected void onBalloonOpen(int index) {}
+	protected boolean onBalloonOpen(int index, Item item) {
+		return false;
+	}
+	
+	/**
+	 * Override this method to perform actions upon an item being tapped before 
+	 * its balloon is closed. By default, does nothing 
+	 * and returns false.
+	 * 
+	 * @param index - The index of the item whose balloon is tapped.
+	 * @param item - The item whose balloon is tapped.
+	 * @return true if you handled the tap, otherwise false.
+	 */
+	protected boolean onBalloonClose(int index, Item item) {
+		return false;
+	}
 
 	/* (non-Javadoc)
 	 * @see com.google.android.maps.ItemizedOverlay#onTap(int)
@@ -122,7 +140,7 @@ public abstract class BalloonItemizedOverlay<Item extends OverlayItem> extends I
 		currentFocusedItem = createItem(index);
 		setLastFocusedIndex(index);
 		
-		onBalloonOpen(index);
+		onBalloonOpen(currentFocusedIndex, currentFocusedItem);
 		createAndDisplayBalloonOverlay();
 		
 		if (snapToCenter) {
@@ -173,7 +191,10 @@ public abstract class BalloonItemizedOverlay<Item extends OverlayItem> extends I
 	 */
 	public void hideBalloon() {
 		if (balloonView != null) {
-			balloonView.setVisibility(View.GONE);
+			if(balloonView.getVisibility()==View.VISIBLE) {
+				balloonView.setVisibility(View.GONE);
+				onBalloonClose(currentFocusedIndex, currentFocusedItem);
+			}
 		}
 		currentFocusedItem = null;
 	}
