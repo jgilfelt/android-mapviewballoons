@@ -1,67 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:layout_width="wrap_content" 
-	android:layout_height="wrap_content"
-	android:orientation="horizontal" 
-	android:paddingBottom="25dip"
-	android:paddingLeft="10dip" 
-	android:minWidth="200dip" 
-	android:id="@+id/balloon_main_layout"
-	android:background="@drawable/balloon_overlay_bg_selector"
-	android:paddingTop="0dip"
-	android:paddingRight="10dip"> 
+    android:background="@drawable/balloon_overlay_bg_selector"
+    android:id="@+id/balloon_main_layout"
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+    android:minWidth="200dp"
+    android:orientation="horizontal" >
+
+    <ImageView
+        android:contentDescription="@null"
+        android:id="@+id/balloon_item_image"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:paddingBottom="2dp"
+        android:paddingLeft="2dp"
+        android:paddingTop="2dp"
+        android:src="@drawable/ic_launcher" />
 
     <!-- your click region must be some sort of layout container using @id/balloon_inner_layout -->
-    
+
     <LinearLayout
         android:id="@id/balloon_inner_layout"
-        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1" >
+        android:layout_weight="1.0"
+        android:layout_width="0dp"
+        android:orientation="vertical"
+        android:padding="2dp" >
 
-        <ImageView
-            android:id="@+id/balloon_item_image"
-            android:layout_width="40dip"
-            android:layout_height="54dip"
-            android:src="@drawable/icon"
-            android:paddingTop="10dip"
-            android:paddingRight="10dip" />
-
-        <LinearLayout
-            android:layout_width="0dp"
+        <TextView
+            android:id="@+id/balloon_item_title"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:paddingTop="10dip" >
+            android:layout_width="wrap_content"
+            android:text="@null"
+            android:textColor="@android:color/primary_text_light"
+            android:textSize="16sp" />
 
-            <TextView
-                android:id="@+id/balloon_item_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="balloon_item_title"
-                android:textColor="@android:color/primary_text_light"
-                android:textSize="16dip" />
-
-            <TextView
-                android:id="@+id/balloon_item_snippet"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="balloon_item_snippet"
-                android:textColor="@android:color/secondary_text_light"
-                android:textSize="12dip" />
-        </LinearLayout>
-
+        <TextView
+            android:id="@+id/balloon_item_snippet"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@null"
+            android:textColor="@android:color/secondary_text_light"
+            android:textSize="12sp" />
     </LinearLayout>
 	
-	<!-- a close control is optional - it must use @id/balloon_close -->
-    
-<!-- 	<ImageView android:layout_width="wrap_content" -->
-<!-- 		android:layout_height="wrap_content"  -->
-<!-- 		android:src="@drawable/balloon_overlay_close" -->
-<!-- 		android:id="@id/balloon_close"  -->
-<!-- 		android:paddingLeft="10dip" -->
-<!-- 		android:paddingBottom="10dip"  -->
-<!-- 		android:paddingRight="5dip" -->
-<!-- 		android:paddingTop="5dip"/> -->
+    <!-- a close control is optional - it must use @id/balloon_close -->
+
+    <ImageView
+        android:contentDescription="@null"
+        android:id="@id/balloon_close"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:paddingBottom="2dp"
+        android:paddingRight="2dp"
+        android:paddingTop="2dp"
+        android:src="@drawable/balloon_overlay_close" />
 
 </LinearLayout>
