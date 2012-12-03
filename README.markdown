@@ -1,6 +1,10 @@
 Android MapView Balloons
 ========================
 
+**DEPRECATED**
+
+**Please use Google Maps Android API v2:** https://developers.google.com/maps/documentation/android/ 
+
 This project provides an easy way to annotate map overlay items with a simple information balloon when using the Android Maps external library (`com.google.android.maps`). It consists of `BalloonOverlayView`, a view representing the balloon that is displayed over your `MapView` and `BalloonItemizedOverlay`, an abstract extension of `ItemizedOverlay`.
 
 ![Balloon](http://jeffgilfelt.com/mapviewballoons/mvb-1a.png "Balloon")&nbsp;
