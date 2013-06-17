@@ -1,28 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-    <modelVersion>4.0.0</modelVersion>	
-	
-	<groupId>com.github.jgilfelt.mapviewballoons</groupId>
-	<artifactId>parent</artifactId>
-	<version>1.5.2-SNAPSHOT</version>	
-	<packaging>pom</packaging>
-	<name>MapViewBalloons - PARENT</name>
-	
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		
-		<!-- Plugins -->
-		<jdk.version>1.6</jdk.version>
-		<sdk.platform>15</sdk.platform>
-		<android-maven-plugin.version>3.6.0</android-maven-plugin.version>
-		<maven-compiler-plugin.version>2.3.2</maven-compiler-plugin.version>
-		<maven-release-plugin.version>2.2.1</maven-release-plugin.version>
-		
-		<!-- Dependencies -->
-		<android.version>4.1.1.4</android.version>
-		<android.maps.version>8_r2</android.maps.version>
-	</properties>
-	
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.github.jgilfelt.mapviewballoons</groupId>
+    <artifactId>parent</artifactId>
+    <version>1.5.2-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>MapViewBalloons - PARENT</name>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <!-- Plugins -->
+        <jdk.version>1.6</jdk.version>
+        <sdk.platform>15</sdk.platform>
+        <android-maven-plugin.version>3.6.0</android-maven-plugin.version>
+        <maven-compiler-plugin.version>2.3.2</maven-compiler-plugin.version>
+        <maven-release-plugin.version>2.2.1</maven-release-plugin.version>
+
+        <!-- Dependencies -->
+        <android.version>4.1.1.4</android.version>
+        <android.maps.version>8_r2</android.maps.version>
+    </properties>
+
     <modules>
         <module>android-mapviewballoons</module>
         <module>android-mapviewballoons-example</module>
@@ -42,7 +44,7 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-	
+
     <build>
         <pluginManagement>
             <plugins>
@@ -57,14 +59,14 @@
                         </sdk>
                     </configuration>
                 </plugin>
-	            <plugin>
-	                <artifactId>maven-compiler-plugin</artifactId>
-	                <version>${maven-compiler-plugin.version}</version>
-	                <configuration>
-	                    <source>${jdk.version}</source>
-	                    <target>${jdk.version}</target>
-	                </configuration>
-	            </plugin>
+                <plugin>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven-compiler-plugin.version}</version>
+                    <configuration>
+                        <source>${jdk.version}</source>
+                        <target>${jdk.version}</target>
+                    </configuration>
+                </plugin>
             </plugins>
         </pluginManagement>
     </build>
