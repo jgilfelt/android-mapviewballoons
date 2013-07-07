@@ -34,10 +34,17 @@ public class SimpleItemizedOverlay extends BalloonItemizedOverlay<OverlayItem> {
 	public SimpleItemizedOverlay(Drawable defaultMarker, MapView mapView) {
 		super(boundCenter(defaultMarker), mapView);
 		c = mapView.getContext();
+		// Workaround for bug that Google refuses to fix:
+        // <a href="http://osdir.com/ml/AndroidDevelopers/2009-08/msg01605.html">http://osdir.com/ml/AndroidDevelopers/2009-08/msg01605.html</a>
+        // <a href="http://code.google.com/p/android/issues/detail?id=2035">http://code.google.com/p/android/issues/detail?id=2035</a>
+		populate();
 	}
 
 	public void addOverlay(OverlayItem overlay) {
 	    m_overlays.add(overlay);
+	    // Workaround for another issue with this class:
+        // <a href="http://groups.google.com/group/android-developers/browse_thread/thread/38b11314e34714c3">http://groups.google.com/group/android-developers/browse_thread/thread/38b11314e34714c3</a>
+        setLastFocusedIndex(-1);
 	    populate();
 	}
 
