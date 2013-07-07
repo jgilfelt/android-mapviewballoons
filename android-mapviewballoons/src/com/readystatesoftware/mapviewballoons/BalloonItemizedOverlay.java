@@ -107,13 +107,24 @@ public abstract class BalloonItemizedOverlay<Item extends OverlayItem> extends I
 	 */
 	protected void onBalloonOpen(int index) {}
 
-	/* (non-Javadoc)
+	/**
+	 * Override this method for custom handling of tapping an item.
+	 * By default, tapping inflates the balloon of the item.
 	 * @see com.google.android.maps.ItemizedOverlay#onTap(int)
 	 */
 	@Override
 	//protected final boolean onTap(int index) {
-	public final boolean onTap(int index) {
-		
+	public boolean onTap(int index) {
+		inflateBalloon(index);
+		return true;
+	}
+
+	/**
+	 * Inflate the balloon of an item, as usually happens
+	 * when the item is tapped.
+	 * @param index The item to show a balloon for
+	 */
+	public void inflateBalloon(int index) {
 		handler.removeCallbacks(finishBalloonInflation);
 		isInflating = true;
 		handler.postDelayed(finishBalloonInflation, BALLOON_INFLATION_TIME);
@@ -128,8 +139,6 @@ public abstract class BalloonItemizedOverlay<Item extends OverlayItem> extends I
 		if (snapToCenter) {
 			animateTo(index, currentFocusedItem.getPoint());
 		}
-		
-		return true;
 	}
 
 	/**
